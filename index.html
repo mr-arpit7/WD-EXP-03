@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Pasta Bella | Indo-Italian Fusion Restaurant</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --burgundy: #800020;
+            --cream: #F5F5DC;
+            --gold: #D4AF37;
+            --matte-black: #1a1a1a;
+            --dark-bg: #0f0f0f;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--matte-black);
+            color: var(--cream);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: transparent;
+            transition: all 0.4s ease;
+            padding: 1rem 0;
+        }
+
+        .navbar.scrolled {
+            background: rgba(26, 26, 26, 0.95) !important;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            padding: 0.5rem 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--cream) !important;
+            letter-spacing: 0.04em;
+        }
+
+        .navbar-brand i {
+            color: var(--gold);
+        }
+
+        .nav-link {
+            color: rgba(245, 245, 220, 0.8) !important;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            padding: 0.5rem 0.9rem !important;
+        }
+
+        .nav-link:hover {
+            color: var(--gold) !important;
+        }
+
+        .navbar-toggler {
+            border-color: rgba(245, 245, 220, 0.3);
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+
+        .btn-gold {
+            background-color: var(--gold);
+            color: var(--matte-black);
+            border: none;
+            border-radius: 50px;
+            padding: 0.5rem 1.4rem;
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .btn-gold:hover {
+            background-color: #c9a227;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            transform: scale(1.05);
+            color: var(--matte-black);
+        }
+
+        .btn-outline-cream {
+            border: 2px solid rgba(245, 245, 220, 0.4);
+            color: var(--cream);
+            border-radius: 50px;
+            padding: 0.6rem 1.8rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: transparent;
+            transition: all 0.3s;
+        }
+
+        .btn-outline-cream:hover {
+            background: rgba(245, 245, 220, 0.1);
+            border-color: var(--burgundy);
+            color: var(--cream);
+        }
+
+        /* ===== HERO ===== */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1920&q=80') center/cover no-repeat;
+            filter: brightness(0.3);
+            transform: scale(1.05);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(26,26,26,0.5), transparent 50%, var(--matte-black));
+        }
+
+        .hero-section .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            color: var(--gold);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            color: var(--cream);
+            line-height: 1.1;
+        }
+
+        .hero-title span {
+            color: var(--gold);
+        }
+
+        .hero-text {
+            color: rgba(245, 245, 220, 0.7);
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        /* ===== SECTION HELPERS ===== */
+        .section-label {
+            color: var(--gold);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--cream);
+        }
+
+        .gold-line {
+            width: 4rem;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        /* ===== ABOUT ===== */
+        #about {
+            background-color: var(--matte-black);
+        }
+
+        .about-img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+
+        .about-text p {
+            color: rgba(245, 245, 220, 0.7);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .stat-box h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-size: 2rem;
+        }
+
+        .stat-box p {
+            color: rgba(245, 245, 220, 0.6);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .experience-badge {
+            background: var(--burgundy);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .experience-badge .since {
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            display: block;
+        }
+
+        .experience-badge .year {
+            color: var(--cream);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            display: block;
+            line-height: 1;
+        }
+
+        /* ===== MENU SECTION ===== */
+        #menu {
+            background-color: var(--dark-bg);
+        }
+
+        .filter-btn {
+            border-radius: 50px;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.4rem 1.2rem;
+            background: var(--matte-black);
+            border: 1px solid rgba(245, 245, 220, 0.15);
+            color: rgba(245, 245, 220, 0.6);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gold);
+            color: var(--matte-black);
+            border-color: var(--gold);
+        }
+
+        .menu-card {
+            background: rgba(26, 26, 26, 0.6);
+            border: 1px solid rgba(245, 245, 220, 0.07);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.4s;
+            height: 100%;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 175, 55, 0.35);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+        }
+
+        .menu-card-img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+            transition: transform 0.5s;
+        }
+
+        .menu-card:hover .menu-card-img {
+            transform: scale(1.07);
+        }
+
+        .menu-card-img-wrap {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .veg-badge {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 600;
+        }
+
+        .badge-veg {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .badge-nonveg {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .menu-card .card-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--cream);
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .menu-card:hover .card-title {
+            color: var(--gold);
+        }
+
+        .menu-card .card-text {
+            color: rgba(245, 245, 220, 0.6);
+            font-size: 0.85rem;
+        }
+
+        .price-tag {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        /* ===== GALLERY ===== */
+        #gallery {
+            background-color: var(--matte-black);
+        }
+
+        .gallery-img-wrap {
+            overflow: hidden;
+            border-radius: 0.75rem;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-img-wrap img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s;
+            display: block;
+        }
+
+        .gallery-img-wrap:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(128, 0, 32, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.4s;
+            border-radius: 0.75rem;
+        }
+
+        .gallery-img-wrap:hover .gallery-overlay {
+            background: rgba(128, 0, 32, 0.45);
+        }
+
+        .gallery-plus {
+            width: 2.8rem;
+            height: 2.8rem;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--matte-black);
+            font-size: 1.3rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-img-wrap:hover .gallery-plus {
+            opacity: 1;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        #testimonials {
+            background-color: var(--dark-bg);
+        }
+
+        .testimonial-card {
+            background: rgba(15, 15, 15, 0.6);
+            border: 1px solid rgba(245, 245, 220, 0.07);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.15rem;
+            color: rgba(245, 245, 220, 0.88);
+            font-style: italic;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .testimonial-author img {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gold);
+        }
+
+        .testimonial-name {
+            color: var(--cream);
+            font-weight: 600;
+            margin-bottom: 0.1rem;
+        }
+
+        .testimonial-role {
+            color: var(--gold);
+            font-size: 0.82rem;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: rgba(212, 175, 55, 0.6);
+            border-radius: 50%;
+            padding: 1rem;
+        }
+
+        /* ===== RESERVATION ===== */
+        #reservations {
+            background-color: var(--dark-bg);
+            position: relative;
+        }
+
+        .reservation-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1550966871-3ed3c47e2ce2?w=1920&q=80') center/cover;
+            opacity: 0.05;
+        }
+
+        .glass-form {
+            background: rgba(26, 26, 26, 0.5);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(245, 245, 220, 0.1);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-label {
+            color: rgba(245, 245, 220, 0.6);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-control, .form-select {
+            background: rgba(15, 15, 15, 0.6);
+            border: 1px solid rgba(245, 245, 220, 0.12);
+            color: var(--cream);
+            border-radius: 0.75rem;
+            padding: 0.7rem 1rem;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background: rgba(15, 15, 15, 0.7);
+            border-color: var(--gold);
+            box-shadow: 0 0 0 0.15rem rgba(212, 175, 55, 0.2);
+            color: var(--cream);
+        }
+
+        .form-control::placeholder {
+            color: rgba(245, 245, 220, 0.3);
+        }
+
+        .form-select option {
+            background: var(--matte-black);
+            color: var(--cream);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0a0a0a;
+            border-top: 1px solid rgba(245, 245, 220, 0.06);
+        }
+
+        .footer-brand p {
+            color: rgba(245, 245, 220, 0.55);
+            line-height: 1.75;
+            font-size: 0.9rem;
+        }
+
+        .footer-heading {
+            color: var(--gold);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .footer-link {
+            color: rgba(245, 245, 220, 0.55);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: block;
+            transition: color 0.3s;
+            padding: 0.2rem 0;
+        }
+
+        .footer-link:hover {
+            color: var(--gold);
+        }
+
+        .footer-contact-item {
+            color: rgba(245, 245, 220, 0.55);
+            font-size: 0.9rem;
+        }
+
+        .footer-contact-item i {
+            color: var(--gold);
+        }
+
+        .social-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--matte-black);
+            border: 1px solid rgba(245, 245, 220, 0.12);
+            color: var(--cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .social-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(245, 245, 220, 0.06);
+            color: rgba(245, 245, 220, 0.35);
+            font-size: 0.85rem;
+        }
+
+        /* ===== TOAST ===== */
+        #successToast {
+            background: var(--matte-black);
+            border: 1px solid var(--gold);
+            color: var(--cream);
+        }
+
+        /* ===== LIGHTBOX ===== */
+        #lightboxModal .modal-content {
+            background: rgba(0,0,0,0.95);
+            border: none;
+        }
+
+        #lightboxImg {
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 0.5rem;
+        }
+
+        /* Stars */
+        .stars i {
+            color: var(--gold);
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNav">
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="#home">
+            <i class="bi bi-flower1 me-2"></i>La Pasta Bella
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+                <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
+                <li class="nav-item"><a class="nav-link" href="#reservations">Reservations</a></li>
+                <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                    <a class="btn btn-gold" href="#reservations">Reserve a Table</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero-section" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content py-5">
+        <p class="hero-subtitle mb-3">Est. 1987 &bull; Tuscany, Italy &bull; Now in Mumbai</p>
+        <h1 class="hero-title fw-bold mb-3">Taste the Soul<br><span>of Italy</span></h1>
+        <p class="hero-text mb-4">Where tradition meets Indian warmth in every handcrafted dish</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="#menu" class="btn btn-gold px-4 py-2">
+                <i class="bi bi-journal-bookmark me-1"></i> View Menu
+            </a>
+            <a href="#about" class="btn btn-outline-cream px-4 py-2">
+                <i class="bi bi-book me-1"></i> Our Story
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about" class="py-5">
+    <div class="container py-4">
+        <div class="row align-items-center g-5">
+
+            <!-- Text Column -->
+            <div class="col-lg-6 col-md-12 about-text">
+                <p class="section-label mb-2">Our Story</p>
+                <h2 class="section-title mb-3">Three Decades of<br>Culinary Excellence</h2>
+                <div class="gold-line mb-4"></div>
+                <p>Born in the rolling hills of Tuscany in 1987, La Pasta Bella has always believed that great food is the universal language of love. Our founder, Chef Marco Rossi, fell in love with Mumbai's vibrant street food culture during a culinary tour and never looked back.</p>
+                <p>Today, we bring you the finest Indo-Italian fusion â€” where hand-rolled pasta meets the bold spices of India, where Neapolitan pizza dough carries the warmth of tandoori flavors, and where every bite tells a story of two great food traditions coming together.</p>
+
+                <!-- Stats Row -->
+                <div class="row g-3 mt-3">
+                    <div class="col-4 stat-box">
+                        <h3>35+</h3>
+                        <p>Years of Excellence</p>
+                    </div>
+                    <div class="col-4 stat-box">
+                        <h3>50+</h3>
+                        <p>Signature Dishes</p>
+                    </div>
+                    <div class="col-4 stat-box">
+                        <h3>15k+</h3>
+                        <p>Happy Guests</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Column -->
+            <div class="col-lg-6 col-md-12">
+                <div class="position-relative">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=700&q=80"
+                         alt="Our Restaurant" class="about-img">
+                    <div class="position-absolute bottom-0 start-0 translate-middle-y ms-3">
+                        <div class="experience-badge shadow-lg">
+                            <span class="since">Since</span>
+                            <span class="year">1987</span>
+                            <small style="color: rgba(245,245,220,0.6); font-size:0.75rem;">Tuscany â†’ Mumbai</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== MENU ===================== -->
+<section id="menu" style="background-color: var(--dark-bg);" class="py-5">
+    <div class="container py-4">
+
+        <!-- Header -->
+        <div class="text-center mb-5">
+            <p class="section-label mb-2">What We Offer</p>
+            <h2 class="section-title mb-3">Our Signature Menu</h2>
+            <div class="gold-line mx-auto"></div>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="d-flex flex-wrap justify-content-center gap-2 mb-5" id="filterButtons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="pasta">Pasta</button>
+            <button class="filter-btn" data-filter="pizza">Pizza</button>
+            <button class="filter-btn" data-filter="starters">Starters</button>
+            <button class="filter-btn" data-filter="mains">Mains</button>
+            <button class="filter-btn" data-filter="desserts">Desserts</button>
+            <button class="filter-btn" data-filter="veg">
+                <i class="bi bi-circle-fill text-success me-1" style="font-size:0.6rem;"></i>Veg
+            </button>
+            <button class="filter-btn" data-filter="non-veg">
+                <i class="bi bi-circle-fill text-danger me-1" style="font-size:0.6rem;"></i>Non-Veg
+            </button>
+        </div>
+
+        <!-- Menu Grid -->
+        <div class="row g-4" id="menuGrid">
+            <!-- cards injected by JS -->
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== GALLERY ===================== -->
+<section id="gallery" class="py-5">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <p class="section-label mb-2">Visual Delights</p>
+            <h2 class="section-title mb-3">Photo Gallery</h2>
+            <div class="gold-line mx-auto"></div>
+        </div>
+
+        <div class="row g-3" id="galleryGrid">
+            <!-- gallery items injected by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+<section id="testimonials" style="background-color: var(--dark-bg);" class="py-5">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <p class="section-label mb-2">What People Say</p>
+            <h2 class="section-title mb-3">Guest Reviews</h2>
+            <div class="gold-line mx-auto"></div>
+        </div>
+
+        <!-- Bootstrap Carousel for Testimonials -->
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <div class="testimonial-card mx-auto" style="max-width:750px;">
+                        <div class="stars mb-3">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="testimonial-text mb-4">"The Paneer Makhani Pasta is genius! Finally an Italian place that understands the Indian palate. Perfect spice levels and that desi cheese pull!"</p>
+                        <div class="d-flex align-items-center justify-content-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Priya Sharma">
+                            <div class="text-start">
+                                <p class="testimonial-name mb-0">Priya Sharma</p>
+                                <p class="testimonial-role mb-0">Food Blogger, Mumbai</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="testimonial-card mx-auto" style="max-width:750px;">
+                        <div class="stars mb-3">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="testimonial-text mb-4">"Butter Chicken Pasta is a game-changer. At these prices, it's the best Indo-Italian fusion in Mumbai. Worth every rupee."</p>
+                        <div class="d-flex align-items-center justify-content-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Rahul Mehta">
+                            <div class="text-start">
+                                <p class="testimonial-name mb-0">Rahul Mehta</p>
+                                <p class="testimonial-role mb-0">Restaurant Critic, Times of India</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="testimonial-card mx-auto" style="max-width:750px;">
+                        <div class="stars mb-3">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="testimonial-text mb-4">"The Gulab Jamun Cheesecake is divine! Who knew Indian sweets could work so beautifully in Italian desserts? A must-visit in Bandra."</p>
+                        <div class="d-flex align-items-center justify-content-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Ananya Desai">
+                            <div class="text-start">
+                                <p class="testimonial-name mb-0">Ananya Desai</p>
+                                <p class="testimonial-role mb-0">Travel & Leisure India</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="testimonial-card mx-auto" style="max-width:750px;">
+                        <div class="stars mb-3">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="testimonial-text mb-4">"The Tandoori Chicken Pizza shows real culinary intelligence. Fusion done right â€” respecting both cuisines. And the pricing is very fair."</p>
+                        <div class="d-flex align-items-center justify-content-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="Vikram Khanna">
+                            <div class="text-start">
+                                <p class="testimonial-name mb-0">Vikram Khanna</p>
+                                <p class="testimonial-role mb-0">Master Chef, MasterChef India</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="testimonial-card mx-auto" style="max-width:750px;">
+                        <div class="stars mb-3">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="testimonial-text mb-4">"Their Masala Chai Tiramisu paired with dessert wine is incredible. Great value for money and authentic flavors throughout."</p>
+                        <div class="d-flex align-items-center justify-content-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="Neha Gupta">
+                            <div class="text-start">
+                                <p class="testimonial-name mb-0">Neha Gupta</p>
+                                <p class="testimonial-role mb-0">Wine Enthusiast, Sommelier</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev" style="width:5%;">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next" style="width:5%;">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== RESERVATION ===================== -->
+<section id="reservations" class="py-5 position-relative">
+    <div class="reservation-bg"></div>
+    <div class="container py-4 position-relative" style="z-index:1;">
+        <div class="text-center mb-5">
+            <p class="section-label mb-2">Book Your Visit</p>
+            <h2 class="section-title mb-3">Make a Reservation</h2>
+            <div class="gold-line mx-auto"></div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-12">
+                <div class="glass-form">
+                    <form id="reservationForm" novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-control" placeholder="Arpit Sharma" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-control" placeholder="arpit@email.com" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" placeholder="+91 98765 43210">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Number of Guests</label>
+                                <select class="form-select">
+                                    <option value="">Select guests</option>
+                                    <option>1 Guest</option>
+                                    <option>2 Guests</option>
+                                    <option>3-4 Guests</option>
+                                    <option>5-6 Guests</option>
+                                    <option>7+ Guests</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Preferred Date</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Preferred Time</label>
+                                <select class="form-select">
+                                    <option value="">Select time</option>
+                                    <option>12:00 PM</option>
+                                    <option>1:00 PM</option>
+                                    <option>2:00 PM</option>
+                                    <option>6:00 PM</option>
+                                    <option>7:00 PM</option>
+                                    <option>8:00 PM</option>
+                                    <option>9:00 PM</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Special Requests</label>
+                                <textarea class="form-control" rows="3" placeholder="Any dietary requirements, allergies or special occasions..."></textarea>
+                            </div>
+                            <div class="col-12 text-center mt-2">
+                                <button type="submit" class="btn btn-gold px-5 py-2 fs-6">
+                                    <i class="bi bi-calendar-check me-2"></i>Confirm Reservation
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Info Cards below form -->
+        <div class="row g-3 mt-4 justify-content-center">
+            <div class="col-md-4 col-sm-6">
+                <div class="glass-form text-center py-3">
+                    <i class="bi bi-geo-alt-fill fs-3 mb-2" style="color: var(--gold);"></i>
+                    <p class="mb-0" style="color: rgba(245,245,220,0.7); font-size:0.9rem;">Bandra West, Mumbai, Maharashtra</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="glass-form text-center py-3">
+                    <i class="bi bi-clock-fill fs-3 mb-2" style="color: var(--gold);"></i>
+                    <p class="mb-0" style="color: rgba(245,245,220,0.7); font-size:0.9rem;">Monâ€“Sun: 12 PM â€“ 11 PM</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="glass-form text-center py-3">
+                    <i class="bi bi-telephone-fill fs-3 mb-2" style="color: var(--gold);"></i>
+                    <p class="mb-0" style="color: rgba(245,245,220,0.7); font-size:0.9rem;">+91 22 6789 0123</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="pt-5 pb-3">
+    <div class="container">
+        <div class="row g-4 mb-4">
+
+            <!-- Brand -->
+            <div class="col-lg-3 col-md-6 footer-brand">
+                <h5 class="font-serif mb-3" style="color: var(--cream);">
+                    <i class="bi bi-flower1 me-2" style="color: var(--gold);"></i>La Pasta Bella
+                </h5>
+                <p>Where the flavors of Tuscany meet the vibrant spirit of Mumbai. Crafting unforgettable dining experiences since 1987.</p>
+                <div class="d-flex gap-2 mt-3">
+                    <a href="#" class="social-btn"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="social-btn"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="social-btn"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#" class="social-btn"><i class="bi bi-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-2 col-md-6">
+                <h6 class="footer-heading mb-3">Quick Links</h6>
+                <a href="#home" class="footer-link">Home</a>
+                <a href="#about" class="footer-link">About Us</a>
+                <a href="#menu" class="footer-link">Our Menu</a>
+                <a href="#gallery" class="footer-link">Gallery</a>
+                <a href="#reservations" class="footer-link">Reservations</a>
+            </div>
+
+            <!-- Menu Categories -->
+            <div class="col-lg-3 col-md-6">
+                <h6 class="footer-heading mb-3">Menu Categories</h6>
+                <a href="#menu" class="footer-link">Pasta & Risotto</a>
+                <a href="#menu" class="footer-link">Pizza</a>
+                <a href="#menu" class="footer-link">Starters</a>
+                <a href="#menu" class="footer-link">Main Course</a>
+                <a href="#menu" class="footer-link">Desserts</a>
+            </div>
+
+            <!-- Contact -->
+            <div class="col-lg-4 col-md-6">
+                <h6 class="footer-heading mb-3">Contact Us</h6>
+                <div class="d-flex gap-2 mb-2 footer-contact-item">
+                    <i class="bi bi-geo-alt-fill mt-1"></i>
+                    <span>24, Linking Road, Bandra West, Mumbai â€“ 400050</span>
+                </div>
+                <div class="d-flex gap-2 mb-2 footer-contact-item">
+                    <i class="bi bi-telephone-fill mt-1"></i>
+                    <span>+91 22 6789 0123</span>
+                </div>
+                <div class="d-flex gap-2 mb-2 footer-contact-item">
+                    <i class="bi bi-envelope-fill mt-1"></i>
+                    <span>info@lapastabella.com</span>
+                </div>
+                <div class="d-flex gap-2 mb-2 footer-contact-item">
+                    <i class="bi bi-clock-fill mt-1"></i>
+                    <span>Mon â€“ Sun: 12:00 PM â€“ 11:00 PM</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="footer-bottom py-3 text-center">
+            <p class="mb-0">&copy; 2025 La Pasta Bella. All rights reserved. Made with <i class="bi bi-heart-fill text-danger"></i> in Mumbai.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ===================== LIGHTBOX MODAL ===================== -->
+<div class="modal fade" id="lightboxModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" style="background:rgba(0,0,0,0.95); border:none;">
+            <div class="modal-body p-2 text-center position-relative">
+                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-2"
+                        data-bs-dismiss="modal"></button>
+                <img id="lightboxImg" src="" alt="Gallery" class="img-fluid" id="lightboxImg">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== TOAST ===================== -->
+<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3" style="z-index:9999;">
+    <div id="successToast" class="toast align-items-center border-0" role="alert">
+        <div class="d-flex align-items-center gap-2 p-3">
+            <i class="bi bi-check-circle-fill fs-4" style="color: var(--gold);"></i>
+            <div>
+                <strong style="color: var(--cream);">Reservation Confirmed!</strong>
+                <p class="mb-0" style="color: rgba(245,245,220,0.7); font-size:0.85rem;">We'll see you soon at La Pasta Bella!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // ===== MENU DATA =====
+    const menuItems = [
+        // PASTA â€” photos verified as pasta/Italian dishes
+        { id:1,  name:"Butter Chicken Pasta",       description:"Creamy murgh makhani sauce with penne, finished with kasuri methi and fresh cream",         price:"â‚¹320", image:"https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400&q=80", category:"pasta",    type:"non-veg" },
+        { id:2,  name:"Paneer Makhani Pasta",        description:"House-made cottage cheese in rich tomato-butter gravy with rigatoni",                       price:"â‚¹280", image:"https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400&q=80", category:"pasta",    type:"veg"     },
+        // Saag Carbonara â€” using a verified spinach/green creamy pasta photo
+        { id:3,  name:"Saag Carbonara",              description:"Creamy carbonara with fresh palak, pancetta, and a hint of nutmeg",                          price:"â‚¹290", image:"https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=400&q=80", category:"pasta",    type:"non-veg" },
+        // Dal Makhani Risotto â€” using verified risotto photo (bowl of creamy risotto)
+        { id:4,  name:"Dal Makhani Risotto",         description:"Slow-cooked black lentils folded into a silky arborio rice risotto",                         price:"â‚¹310", image:"https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=400&q=80", category:"pasta",    type:"veg"     },
+
+        // PIZZA â€” all three are genuine pizza photos
+        { id:5,  name:"Tandoori Chicken Pizza",      description:"Marinated tandoori chicken, red onion, mint chutney on thin crust",                          price:"â‚¹380", image:"https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80", category:"pizza",    type:"non-veg" },
+        { id:6,  name:"Paneer Tikka Pizza",          description:"Smoky cottage cheese, bell peppers, and spiced tomato base",                                 price:"â‚¹340", image:"https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&q=80", category:"pizza",    type:"veg"     },
+        { id:7,  name:"Peri Peri Chicken Pizza",     description:"Spicy Portuguese-style chicken, jalapenos, mozzarella",                                      price:"â‚¹360", image:"https://images.unsplash.com/photo-1528137871618-79d2761e3fd5?w=400&q=80", category:"pizza",    type:"non-veg" },
+
+        // STARTERS â€” replaced with verified photos
+        // Bruschetta Mumbai Style â€” verified bruschetta photo (toasted bread with tomato topping)
+        { id:8,  name:"Bruschetta Mumbai Style",     description:"Toasted sourdough, pav bhaji masala, fresh tomatoes, basil",                                 price:"â‚¹180", image:"https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=400&q=80", category:"starters", type:"veg"     },
+        // Seekh Kebab Arancini â€” replaced with actual arancini (golden rice balls) photo
+        { id:9,  name:"Seekh Kebab Arancini",        description:"Sicilian rice balls stuffed with spiced lamb seekh kebab mixture",                            price:"â‚¹220", image:"https://images.unsplash.com/photo-1574484284002-952d92456975?w=400&q=80", category:"starters", type:"non-veg" },
+        // Chaat Bruschetta â€” using a verified chaat/Indian street food plate photo
+        { id:10, name:"Chaat Bruschetta",            description:"Crispy bread loaded with sev, yogurt, tamarind, and pomegranate",                            price:"â‚¹160", image:"https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=400&q=80", category:"starters", type:"veg"     },
+
+        // MAINS
+        // Osso Buco Vindaloo â€” braised meat dish, verified
+        { id:11, name:"Osso Buco Vindaloo",          description:"Slow-braised lamb shank with Goan vindaloo spices, served with saffron risotto",             price:"â‚¹580", image:"https://images.unsplash.com/photo-1544025162-d76694265947?w=400&q=80", category:"mains",    type:"non-veg" },
+        // Eggplant Parmigiana Bharta â€” replaced with a verified eggplant/aubergine dish photo
+        { id:12, name:"Eggplant Parmigiana Bharta",  description:"Italian baked aubergine meets smoky Indian bharta â€” a vegetarian masterpiece",                price:"â‚¹340", image:"https://images.unsplash.com/photo-1635321593217-40050ad13c74?w=400&q=80", category:"mains",    type:"veg"     },
+        // Rogan Josh Gnocchi â€” replaced with verified gnocchi with red sauce photo
+        { id:13, name:"Rogan Josh Gnocchi",          description:"Pillowy potato gnocchi in a rich Kashmiri Rogan Josh lamb curry",                            price:"â‚¹420", image:"https://images.unsplash.com/photo-1527324688151-0e627063f2b1?w=400&q=80", category:"mains",    type:"non-veg" },
+        // Mushroom Truffle Biryani â€” verified biryani photo
+        { id:14, name:"Mushroom Truffle Biryani",    description:"Fragrant basmati with truffle oil, forest mushrooms, and barista onions",                    price:"â‚¹380", image:"https://images.unsplash.com/photo-1563379091339-03246963d96f?w=400&q=80", category:"mains",    type:"veg"     },
+
+        // DESSERTS
+        // Gulab Jamun Cheesecake â€” verified cheesecake/dessert photo
+        { id:15, name:"Gulab Jamun Cheesecake",      description:"New York cheesecake with gulab jamun compote and rose water",                                price:"â‚¹260", image:"https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&q=80", category:"desserts", type:"veg"     },
+        // Masala Chai Tiramisu â€” replaced with verified tiramisu photo (cocoa dusted dessert)
+        { id:16, name:"Masala Chai Tiramisu",        description:"Classic tiramisu with masala chai-soaked ladyfingers and cardamom cream",                    price:"â‚¹240", image:"https://images.unsplash.com/photo-1542124948-dc391252a940?w=400&q=80", category:"desserts", type:"veg"     },
+        // Rasmalai Panna Cotta â€” replaced with verified panna cotta photo (white wobbly cream dessert)
+        { id:17, name:"Rasmalai Panna Cotta",        description:"Silky panna cotta infused with rasmalai flavors, saffron, and cardamom",                    price:"â‚¹210", image:"https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&q=80", category:"desserts", type:"veg"     },
+        // Chocolate Samosa â€” replaced with verified chocolate/fried pastry dessert photo
+        { id:18, name:"Chocolate Samosa",            description:"Crispy pastry filled with molten chocolate and nuts, served with vanilla ice cream",         price:"â‚¹190", image:"https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=400&q=80", category:"desserts", type:"veg"     },
+    ];
+
+    const galleryImages = [
+        "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80",
+        "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80",
+        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80",
+        "https://images.unsplash.com/photo-1550966871-3ed3c47e2ce2?w=600&q=80",
+        "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80",
+        "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600&q=80",
+        "https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80",
+        "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&q=80"
+    ];
+
+    // ===== RENDER MENU =====
+    function renderMenu(filter = 'all') {
+        const grid = document.getElementById('menuGrid');
+        const filtered = filter === 'all'
+            ? menuItems
+            : menuItems.filter(item => item.category === filter || item.type === filter);
+
+        grid.innerHTML = filtered.map(dish => `
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="menu-card">
+                    <div class="menu-card-img-wrap">
+                        <img src="${dish.image}" alt="${dish.name}" class="menu-card-img"
+                             onerror="this.src='https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=400&q=80'">
+                        <span class="veg-badge ${dish.type === 'veg' ? 'badge-veg' : 'badge-nonveg'}">
+                            ${dish.type === 'veg' ? 'ðŸŸ¢ Veg' : 'ðŸ”´ Non-Veg'}
+                        </span>
+                    </div>
+                    <div class="p-3">
+                        <div class="d-flex justify-content-between align-items-start mb-1">
+                            <h6 class="card-title mb-0">${dish.name}</h6>
+                            <span class="price-tag ms-2">${dish.price}</span>
+                        </div>
+                        <p class="card-text mb-0" style="font-size:0.82rem;">${dish.description}</p>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // ===== FILTER BUTTONS =====
+    document.getElementById('filterButtons').addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderMenu(btn.dataset.filter);
+    });
+
+    // ===== RENDER GALLERY =====
+    function renderGallery() {
+        const grid = document.getElementById('galleryGrid');
+        grid.innerHTML = galleryImages.map((img, idx) => `
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="gallery-img-wrap" data-src="${img}">
+                    <img src="${img}" alt="Gallery ${idx+1}" loading="lazy"
+                         onerror="this.src='https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=600&q=80'">
+                    <div class="gallery-overlay">
+                        <div class="gallery-plus"><i class="bi bi-plus-lg"></i></div>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+        // click to open lightbox
+        document.querySelectorAll('.gallery-img-wrap').forEach(item => {
+            item.addEventListener('click', () => {
+                document.getElementById('lightboxImg').src = item.dataset.src;
+                new bootstrap.Modal(document.getElementById('lightboxModal')).show();
+            });
+        });
+    }
+
+    // ===== NAVBAR SCROLL =====
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('mainNav');
+        if (window.scrollY > 60) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+
+    // ===== RESERVATION FORM =====
+    document.getElementById('reservationForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const toastEl = document.getElementById('successToast');
+        const toast = new bootstrap.Toast(toastEl, { delay: 3500 });
+        toast.show();
+        e.target.reset();
+    });
+
+    // ===== INIT =====
+    renderMenu();
+    renderGallery();
+</script>
+</body>
+</html>
