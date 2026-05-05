@@ -421,14 +421,14 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 const menuItems = [
-    { id: 1, name: "Paneer Tikka Bruschetta", desc: "Grilled sourdough with tandoori paneer", price: "&#8377; 220", img: "https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=400&q=80", cat: "starters", type: "veg" },
-    { id: 2, name: "Masala Arancini", desc: "Crispy risotto balls with spiced potato", price: "&#8377; 190", img: "https://images.unsplash.com/photo-1541529086526-db283c563270?w=400&q=80", cat: "starters", type: "veg" },
-    { id: 3, name: "Paneer Makhani Pasta", desc: "Penne in butter paneer gravy", price: "&#8377; 320", img: "https://images.unsplash.com/photo-1556761223-4c4282c73f77?w=400&q=80", cat: "mains", type: "veg" },
-    { id: 4, name: "Masala Risotto", desc: "Creamy arborio rice with Indian spices", price: "&#8377; 340", img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=400&q=80", cat: "mains", type: "veg" },
-    { id: 5, name: "Butter Chicken Pasta", desc: "Spaghetti in butter chicken sauce", price: "&#8377; 380", img: "https://images.unsplash.com/photo-1551183053-bf91b1dca034?w=400&q=80", cat: "mains", type: "non-veg" },
-    { id: 6, name: "Tandoori Chicken Wings", desc: "Spiced chicken roasted in tandoor", price: "&#8377; 290", img: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=400&q=80", cat: "starters", type: "non-veg" },
-    { id: 7, name: "Gulab Jamun Cheesecake", desc: "Cheesecake with gulab jamun topping", price: "&#8377; 220", img: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&q=80", cat: "desserts", type: "veg" },
-    { id: 8, name: "Masala Chai Tiramisu", desc: "Tiramisu with masala chai flavors", price: "&#8377; 240", img: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&q=80", cat: "desserts", type: "veg" },
+    { id: 1, name: "Paneer Tikka Appetizer", desc: "Tandoori paneer cubes with mint chutney", price: "&#8377; 220", img: "https://images.unsplash.com/photo-1599043513557-430f63602d4a?w=400&q=80", cat: "starters", type: "veg" },
+    { id: 2, name: "Garlic Bread", desc: "Crispy bread with garlic and herbs", price: "&#8377; 190", img: "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?w=400&q=80", cat: "starters", type: "veg" },
+    { id: 3, name: "Paneer Makhani Pasta", desc: "Penne in creamy butter paneer sauce", price: "&#8377; 320", img: "https://images.unsplash.com/photo-1645112411341-6c4ee32510d8?w=400&q=80", cat: "mains", type: "veg" },
+    { id: 4, name: "Vegetable Risotto", desc: "Creamy risotto with seasonal vegetables", price: "&#8377; 340", img: "https://images.unsplash.com/photo-1584623314986-374a2d241e1c?w=400&q=80", cat: "mains", type: "veg" },
+    { id: 5, name: "Butter Chicken Pasta", desc: "Spaghetti in rich butter chicken sauce", price: "&#8377; 380", img: "https://images.unsplash.com/photo-1645112411341-6c4ee32510d8?w=400&q=80", cat: "mains", type: "non-veg" },
+    { id: 6, name: "Grilled Chicken Skewers", desc: "Tender chicken marinated and grilled", price: "&#8377; 290", img: "https://images.unsplash.com/photo-1565957815587-94f8bc52002f?w=400&q=80", cat: "starters", type: "non-veg" },
+    { id: 7, name: "Tiramisu", desc: "Classic Italian dessert with mascarpone", price: "&#8377; 240", img: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&q=80", cat: "desserts", type: "veg" },
+    { id: 8, name: "Chocolate Lava Cake", desc: "Warm chocolate cake with melting center", price: "&#8377; 220", img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80", cat: "desserts", type: "veg" },
 ];
 
 const galleryImages = [
@@ -446,7 +446,7 @@ function renderMenu(filter = 'all') {
         <div class="col-md-6 col-lg-4">
             <div class="menu-card">
                 <div style="position: relative;">
-                    <img src="${m.img}" class="card-img-top">
+                    <img src="${m.img}" class="card-img-top" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=80'">
                     <span class="badge ${m.type === 'veg' ? 'badge-veg' : 'badge-nonveg'}" style="position: absolute; top: 10px; right: 10px;">
                         ${m.type === 'veg' ? '&#x1F7E2; Veg' : '&#x1F534; Non-Veg'}
                     </span>
