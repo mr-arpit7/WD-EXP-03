@@ -3,1664 +3,496 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Pasta Bella | Award-Winning Italian Restaurant</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>La Pasta Bella | Indo-Italian Fusion Restaurant</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --burgundy: #800020;
             --cream: #F5F5DC;
             --gold: #D4AF37;
-            --matte-black: #1a1a1a;
-            --dark-bg: #0f0f0f;
+            --dark: #1a1a1a;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--matte-black);
+            background-color: var(--dark);
             color: var(--cream);
-            overflow-x: hidden;
         }
-
-        h1, h2, h3, h4, .font-serif {
+        h1, h2, h3, h4, h5, .font-serif {
             font-family: 'Playfair Display', serif;
         }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--matte-black);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--gold);
-            border-radius: 4px;
-        }
-
-        /* Navbar */
         .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 50;
-            transition: all 0.5s ease;
-            padding: 1.5rem 0;
+            transition: all 0.3s;
         }
-
         .navbar.scrolled {
-            background: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            padding: 0.75rem 0;
+            background: rgba(26, 26, 26, 0.95) !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
-
-        .nav-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.5rem;
-            font-family: 'Playfair Display', serif;
-            color: var(--cream);
-            letter-spacing: 0.05em;
-        }
-
-        .logo-icon {
-            width: 2rem;
-            height: 2rem;
-            color: var(--gold);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: rgba(245, 245, 220, 0.8);
-            text-decoration: none;
-            font-size: 0.875rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
         .btn-gold {
             background: var(--gold);
-            color: var(--matte-black);
-            padding: 0.625rem 1.5rem;
-            border-radius: 9999px;
+            color: var(--dark);
+            border: none;
+            border-radius: 50px;
             font-weight: 600;
-            font-size: 0.875rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
         }
-
         .btn-gold:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+            background: #c9a227;
+            color: var(--dark);
         }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--cream);
-            cursor: pointer;
-        }
-
-        .mobile-menu {
-            display: none;
-            background: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(12px);
-            padding: 1.5rem;
-        }
-
-        .mobile-menu.active {
-            display: block;
-        }
-
-        .mobile-menu a {
-            display: block;
-            color: var(--cream);
-            text-decoration: none;
-            padding: 0.75rem 0;
-            font-size: 1.125rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        /* Hero */
         .hero {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1920&q=80') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            background: url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1920&q=80') center/cover;
-            filter: brightness(0.35);
-            transform: scale(1.1);
-        }
-
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(26,26,26,0.5), transparent, var(--matte-black));
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            padding: 0 1.5rem;
-            max-width: 900px;
-        }
-
-        .hero-subtitle {
-            color: var(--gold);
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            font-size: 0.875rem;
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            animation: fadeInUp 0.8s 0.3s forwards;
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            font-family: 'Playfair Display', serif;
             color: var(--cream);
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 4px 30px rgba(0,0,0,0.5), 0 0 60px rgba(212, 175, 55, 0.1);
-            opacity: 0;
-            animation: fadeInUp 0.8s 0.5s forwards;
         }
-
-        .hero-title span {
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+        .hero .gold-text {
             color: var(--gold);
         }
-
-        .hero-text {
-            color: rgba(245, 245, 220, 0.7);
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
-            font-weight: 300;
-            opacity: 0;
-            animation: fadeInUp 0.8s 0.8s forwards;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            opacity: 0;
-            animation: fadeInUp 0.8s 1s forwards;
-        }
-
-        .btn-outline {
-            border: 2px solid rgba(245, 245, 220, 0.3);
-            color: var(--cream);
-            padding: 0.875rem 2rem;
-            border-radius: 9999px;
-            font-weight: 600;
-            font-size: 0.875rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            background: transparent;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-outline:hover {
-            background: rgba(245, 245, 220, 0.1);
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(128, 0, 32, 0.4);
-            border-color: var(--burgundy);
-        }
-
-        .floating-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(40px);
-            opacity: 0.3;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .orb-1 {
-            width: 8rem;
-            height: 8rem;
-            background: var(--gold);
-            top: 20%;
-            right: 10%;
-            animation-delay: 0s;
-        }
-
-        .orb-2 {
-            width: 12rem;
-            height: 12rem;
-            background: var(--burgundy);
-            bottom: 20%;
-            left: 5%;
-            animation-delay: 2s;
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-
-        .scroll-indicator div {
-            width: 1.5rem;
-            height: 2.5rem;
-            border: 2px solid rgba(245, 245, 220, 0.5);
-            border-radius: 9999px;
-            display: flex;
-            justify-content: center;
-            padding-top: 0.5rem;
-        }
-
-        .scroll-indicator div::after {
-            content: '';
-            width: 0.25rem;
-            height: 0.5rem;
-            background: rgba(245, 245, 220, 0.5);
-            border-radius: 9999px;
-        }
-
-        /* Sections */
         section {
-            padding: 6rem 0;
+            padding: 5rem 0;
         }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
         .section-label {
             color: var(--gold);
+            text-transform: uppercase;
             letter-spacing: 0.2em;
-            text-transform: uppercase;
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
+            font-size: 0.85rem;
         }
-
         .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
             color: var(--cream);
-            margin-bottom: 1.5rem;
         }
-
-        .section-line {
-            width: 5rem;
-            height: 0.25rem;
+        .gold-line {
+            width: 4rem;
+            height: 3px;
             background: var(--gold);
-            margin: 0 auto;
+            margin: 1rem auto;
         }
-
-        /* About */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text {
-            opacity: 0;
-            transform: translateX(-30px);
-        }
-
-        .about-text.visible {
-            animation: slideInLeft 0.8s forwards;
-        }
-
-        .about-text p {
-            color: rgba(245, 245, 220, 0.7);
-            font-size: 1.125rem;
-            line-height: 1.75;
-            margin-bottom: 1.5rem;
-        }
-
-        .stats {
-            display: flex;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .stat h3 {
-            font-size: 2rem;
-            color: var(--gold);
-            font-family: 'Playfair Display', serif;
-        }
-
-        .stat p {
-            font-size: 0.875rem;
-            color: rgba(245, 245, 220, 0.6);
-            margin: 0;
-        }
-
-        .about-image {
-            position: relative;
-            opacity: 0;
-            transform: translateX(30px);
-        }
-
-        .about-image.visible {
-            animation: slideInRight 0.8s forwards;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: 600px;
-            object-fit: cover;
-            border-radius: 1rem;
-        }
-
-        .image-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(128, 0, 32, 0.4), transparent);
-            border-radius: 1rem;
-        }
-
-        .experience-badge {
-            position: absolute;
-            bottom: -2rem;
-            left: -2rem;
-            width: 12rem;
-            height: 12rem;
-            background: var(--burgundy);
-            border-radius: 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
-        }
-
-        .experience-badge:hover {
-            transform: scale(1.05) rotate(2deg);
-        }
-
-        .experience-badge .since {
-            color: var(--gold);
-            font-size: 1.5rem;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .experience-badge .year {
-            color: var(--cream);
-            font-size: 3rem;
-            font-family: 'Playfair Display', serif;
-        }
-
-        /* Menu */
-        .menu-section {
-            background: var(--dark-bg);
-        }
-
-        .filter-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-bottom: 3rem;
-        }
-
-        .filter-btn {
-            padding: 0.5rem 1.5rem;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
+        .menu-card {
+            background: rgba(26, 26, 26, 0.6);
             border: 1px solid rgba(245, 245, 220, 0.1);
-            background: var(--matte-black);
-            color: rgba(245, 245, 220, 0.6);
-            cursor: pointer;
+            border-radius: 1rem;
+            overflow: hidden;
             transition: all 0.3s;
         }
-
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--gold);
-            color: var(--matte-black);
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-            border-color: var(--gold);
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .menu-card {
-            background: rgba(26, 26, 26, 0.5);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(245, 245, 220, 0.05);
-            border-radius: 1rem;
-            overflow: hidden;
-            transition: all 0.5s;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .menu-card.visible {
-            animation: fadeInUp 0.6s forwards;
-        }
-
         .menu-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(212, 175, 55, 0.3);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
-
-        .menu-card-image {
-            position: relative;
-            height: 14rem;
-            overflow: hidden;
-        }
-
-        .menu-card-image img {
-            width: 100%;
-            height: 100%;
+        .menu-card img {
+            height: 200px;
             object-fit: cover;
-            transition: transform 0.6s;
         }
-
-        .menu-card:hover .menu-card-image img {
-            transform: scale(1.1);
-        }
-
-        .badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-        }
-
         .badge-veg {
             background: rgba(34, 197, 94, 0.2);
             color: #4ade80;
-            border: 1px solid rgba(34, 197, 94, 0.3);
         }
-
         .badge-nonveg {
             background: rgba(239, 68, 68, 0.2);
             color: #f87171;
-            border: 1px solid rgba(239, 68, 68, 0.3);
         }
-
-        .menu-card-content {
-            padding: 1.5rem;
-        }
-
-        .menu-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 0.75rem;
-        }
-
-        .menu-card-title {
-            font-size: 1.25rem;
-            font-family: 'Playfair Display', serif;
-            color: var(--cream);
-            transition: color 0.3s;
-        }
-
-        .menu-card:hover .menu-card-title {
+        .price {
             color: var(--gold);
+            font-weight: bold;
+            font-size: 1.2rem;
         }
-
-        .menu-card-price {
-            color: var(--gold);
-            font-weight: 600;
-            font-size: 1.125rem;
-        }
-
-        .menu-card-desc {
-            color: rgba(245, 245, 220, 0.6);
-            font-size: 0.875rem;
-            line-height: 1.5;
-        }
-
-        /* Gallery */
-        .gallery-grid {
-            columns: 1;
-            column-gap: 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .gallery-grid {
-                columns: 2;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .gallery-grid {
-                columns: 3;
-            }
-        }
-
-        .gallery-item {
-            break-inside: avoid;
-            margin-bottom: 1rem;
-            position: relative;
-            overflow: hidden;
+        .gallery-img {
+            height: 250px;
+            object-fit: cover;
             border-radius: 0.75rem;
+            transition: transform 0.3s;
             cursor: pointer;
-            opacity: 0;
-            transform: translateY(20px);
         }
-
-        .gallery-item.visible {
-            animation: fadeInUp 0.6s forwards;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            display: block;
-            transition: transform 0.5s;
-        }
-
-        .gallery-item:hover img {
+        .gallery-img:hover {
             transform: scale(1.05);
         }
-
-        .gallery-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(128, 0, 32, 0);
-            transition: background 0.5s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            background: rgba(128, 0, 32, 0.4);
-        }
-
-        .gallery-plus {
-            width: 3rem;
-            height: 3rem;
-            background: var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 1.5rem;
-            color: var(--matte-black);
-        }
-
-        .gallery-item:hover .gallery-plus {
-            opacity: 1;
-        }
-
-        /* Lightbox */
-        .lightbox {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 100;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-        }
-
-        .lightbox.active {
-            display: flex;
-            animation: fadeIn 0.3s;
-        }
-
-        .lightbox img {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-            border-radius: 0.5rem;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: none;
-            border: none;
-            color: var(--cream);
-            font-size: 2rem;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .lightbox-close:hover {
-            color: var(--gold);
-        }
-
-        /* Reservation */
-        .reservation-section {
-            background: var(--dark-bg);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .reservation-bg {
-            position: absolute;
-            inset: 0;
-            background: url('https://images.unsplash.com/photo-1550966871-3ed3c47e2ce2?w=1920&q=80') center/cover;
-            opacity: 0.05;
-        }
-
-        .glass-card {
-            background: rgba(26, 26, 26, 0.4);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(245, 245, 220, 0.1);
-            border-radius: 1.5rem;
-            padding: 2rem;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
-        }
-
-        @media (min-width: 768px) {
-            .glass-card {
-                padding: 3rem;
-            }
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .form-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group.full-width {
-            grid-column: 1 / -1;
-        }
-
-        .form-label {
-            color: rgba(245, 245, 220, 0.6);
-            font-size: 0.875rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        .form-input {
-            background: rgba(15, 15, 15, 0.5);
-            border: 1px solid rgba(245, 245, 220, 0.1);
-            border-radius: 0.75rem;
-            padding: 0.75rem 1rem;
-            color: var(--cream);
-            font-size: 1rem;
-            transition: border-color 0.3s;
-            outline: none;
-            width: 100%;
-        }
-
-        .form-input:focus {
-            border-color: var(--gold);
-        }
-
-        .form-input::placeholder {
-            color: rgba(245, 245, 220, 0.3);
-        }
-
-        textarea.form-input {
-            resize: none;
-            min-height: 6rem;
-        }
-
-        /* Toast */
-        .toast {
-            position: fixed;
-            bottom: 2.5rem;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: var(--matte-black);
-            border: 1px solid var(--gold);
-            color: var(--cream);
-            padding: 1rem 2rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            z-index: 100;
-            opacity: 0;
-            transition: all 0.5s;
-        }
-
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
-
-        .toast-icon {
-            width: 2rem;
-            height: 2rem;
-            background: var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--matte-black);
-            font-weight: bold;
-        }
-
-        /* Testimonials */
         .testimonial-card {
-            background: rgba(15, 15, 15, 0.5);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(245, 245, 220, 0.05);
+            background: rgba(15, 15, 15, 0.6);
+            border: 1px solid rgba(245, 245, 220, 0.1);
             border-radius: 1.5rem;
             padding: 2rem;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
         }
-
-        @media (min-width: 768px) {
-            .testimonial-card {
-                padding: 3rem;
-            }
-        }
-
-        .stars {
-            display: flex;
-            justify-content: center;
-            gap: 0.25rem;
-            margin-bottom: 1.5rem;
-        }
-
         .star {
             color: var(--gold);
-            fill: var(--gold);
         }
-
-        .testimonial-text {
-            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
-            color: rgba(245, 245, 220, 0.9);
-            font-style: italic;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            font-weight: 300;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .testimonial-author img {
-            width: 3.5rem;
-            height: 3.5rem;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--gold);
-        }
-
-        .testimonial-info {
-            text-align: left;
-        }
-
-        .testimonial-name {
-            color: var(--cream);
-            font-weight: 600;
-        }
-
-        .testimonial-role {
-            color: var(--gold);
-            font-size: 0.875rem;
-        }
-
-        .carousel-controls {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .carousel-btn {
-            width: 3rem;
-            height: 3rem;
-            border-radius: 50%;
+        .form-control, .form-select {
+            background: rgba(15, 15, 15, 0.7);
             border: 1px solid rgba(245, 245, 220, 0.2);
-            background: transparent;
             color: var(--cream);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
+            border-radius: 0.75rem;
         }
-
-        .carousel-btn:hover {
+        .form-control:focus, .form-select:focus {
+            background: rgba(15, 15, 15, 0.8);
             border-color: var(--gold);
-            color: var(--gold);
+            color: var(--cream);
+            box-shadow: 0 0 0 0.15rem rgba(212, 175, 55, 0.2);
         }
-
-        /* Footer */
-        .footer {
-            background: #0a0a0a;
-            border-top: 1px solid rgba(245, 245, 220, 0.05);
-            padding-top: 5rem;
-            padding-bottom: 2.5rem;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-            margin-bottom: 4rem;
-        }
-
-        @media (min-width: 768px) {
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .footer-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        .footer-brand p {
-            color: rgba(245, 245, 220, 0.6);
-            line-height: 1.75;
-            margin-top: 1.5rem;
-        }
-
-        .footer-heading {
-            color: var(--gold);
-            letter-spacing: 0.05em;
+        .form-label {
+            color: rgba(245, 245, 220, 0.7);
+            font-size: 0.85rem;
             text-transform: uppercase;
-            font-size: 0.875rem;
-            margin-bottom: 1.5rem;
         }
-
-        .footer-links {
-            list-style: none;
+        footer {
+            background: #0a0a0a;
+            border-top: 1px solid rgba(245, 245, 220, 0.1);
         }
-
-        .footer-links li {
-            margin-bottom: 0.75rem;
+        .footer-title {
+            color: var(--gold);
+            text-transform: uppercase;
+            font-size: 0.85rem;
         }
-
-        .footer-links a {
+        .footer-link {
             color: rgba(245, 245, 220, 0.6);
             text-decoration: none;
-            transition: color 0.3s;
         }
-
-        .footer-links a:hover {
+        .footer-link:hover {
             color: var(--gold);
         }
-
-        .footer-contact li {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: rgba(245, 245, 220, 0.6);
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-contact svg {
-            width: 1rem;
-            height: 1rem;
-            color: var(--gold);
-            flex-shrink: 0;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-link {
-            width: 2.5rem;
-            height: 2.5rem;
+        .social-btn {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            background: var(--matte-black);
-            border: 1px solid rgba(245, 245, 220, 0.1);
-            display: flex;
+            background: var(--dark);
+            border: 1px solid rgba(245, 245, 220, 0.2);
+            color: var(--cream);
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            color: var(--cream);
             text-decoration: none;
             transition: all 0.3s;
         }
-
-        .social-link:hover {
+        .social-btn:hover {
             border-color: var(--gold);
             color: var(--gold);
-            transform: translateY(-2px);
         }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(245, 245, 220, 0.05);
-            padding-top: 2rem;
-            text-align: center;
-            color: rgba(245, 245, 220, 0.4);
-            font-size: 0.875rem;
+        .toast-custom {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--dark);
+            border: 1px solid var(--gold);
+            color: var(--cream);
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            display: none;
+            z-index: 9999;
+            animation: slideIn 0.3s;
         }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .toast-custom.show {
+            display: block;
         }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        @keyframes slideIn {
+            from { transform: translateX(400px); }
+            to { transform: translateX(0); }
         }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(5deg);
-            }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            40% {
-                transform: translateX(-50%) translateY(-10px);
-            }
-            60% {
-                transform: translateX(-50%) translateY(-5px);
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .hero h1 {
+                font-size: 2rem;
             }
-
-            .mobile-menu-btn {
-                display: block;
+            .section-title {
+                font-size: 1.8rem;
             }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .experience-badge {
-                position: relative;
-                bottom: auto;
-                left: auto;
-                margin-top: -4rem;
-                margin-left: 1rem;
-            }
-
-            .stats {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
-            }
-        }
-
-        /* Scroll reveal utility */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
     </style>
 </head>
-<body>
+<body data-bs-spy="scroll" data-bs-target="#navbar">
 
-    <!-- Navbar -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <svg class="logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2C8 2 5 5 5 9c0 2 1 4 3 5v3a1 1 0 001 1h6a1 1 0 001-1v-3c2-1 3-3 3-5 0-4-3-7-7-7zM9 20h6M9 22h6"/>
-                </svg>
-                La Pasta Bella
-            </div>
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#menu">Menu</a>
-                <a href="#gallery">Gallery</a>
-                <a href="#reservations">Reservations</a>
-                <button class="btn-gold" onclick="scrollToSection('reservations')">Reserve a Table</button>
-            </div>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-            </button>
-        </div>
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="#home" onclick="toggleMobileMenu()">Home</a>
-            <a href="#about" onclick="toggleMobileMenu()">About</a>
-            <a href="#menu" onclick="toggleMobileMenu()">Menu</a>
-            <a href="#gallery" onclick="toggleMobileMenu()">Gallery</a>
-            <a href="#reservations" onclick="toggleMobileMenu()">Reservations</a>
-        </div>
-    </nav>
-
-    <!-- Hero -->
-    <section class="hero" id="home">
-        <div class="hero-bg" id="heroBg"></div>
-        <div class="hero-overlay"></div>
-        <div class="floating-orb orb-1"></div>
-        <div class="floating-orb orb-2"></div>
-        <div class="hero-content">
-            <p class="hero-subtitle">Est. 1987 &bull; Tuscany, Italy &bull; Now in Mumbai</p>
-            <h1 class="hero-title">Taste the Soul<br><span>of Italy</span></h1>
-            <p class="hero-text">Where tradition meets Indian warmth in every handcrafted dish</p>
-            <div class="hero-buttons">
-                <button class="btn-gold" onclick="scrollToSection('menu')">View Menu</button>
-                <button class="btn-outline" onclick="scrollToSection('about')">Our Story</button>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div></div>
-        </div>
-    </section>
-
-    <!-- About -->
-    <section id="about">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-text" id="aboutText">
-                    <p class="section-label" style="text-align: left; margin-bottom: 1rem;">Our Story</p>
-                    <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">Three Decades of<br>Culinary Excellence</h2>
-                    <div style="width: 5rem; height: 0.25rem; background: var(--gold); margin-bottom: 2rem;"></div>
-                    <p>Founded in 1987 by Chef Antonio Rossi in the heart of Tuscany, La Pasta Bella began as a small family trattoria with a dream: to share authentic Italian flavors with the world.</p>
-                    <p>Today, our Mumbai outpost under Executive Chef Maria Bellini brings that legacy to India with a unique Indo-Italian fusion. We use locally sourced paneer, Indian spices, and farm-fresh vegetables alongside imported Italian cheeses and olive oils &mdash; creating dishes that feel both familiar and exciting to the Indian palate.</p>
-                    <div class="stats">
-                        <div class="stat">
-                            <h3>35+</h3>
-                            <p>Years of Excellence</p>
-                        </div>
-                        <div class="stat">
-                            <h3>2</h3>
-                            <p>Michelin Stars</p>
-                        </div>
-                        <div class="stat">
-                            <h3>50K+</h3>
-                            <p>Happy Guests</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image" id="aboutImage">
-                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Restaurant Interior" onerror="this.src='https://images.unsplash.com/photo-1550966871-3ed3c47e2ce2?w=800&q=80'">
-                    <div class="image-overlay"></div>
-                    <div class="experience-badge">
-                        <span class="since">Since</span>
-                        <span class="year">1987</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Menu -->
-    <section class="menu-section" id="menu">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label">Culinary Delights</p>
-                <h2 class="section-title">Our Menu</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="filter-buttons" id="filterButtons">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="veg">Veg</button>
-                <button class="filter-btn" data-filter="non-veg">Non-Veg</button>
-                <button class="filter-btn" data-filter="starters">Starters</button>
-                <button class="filter-btn" data-filter="mains">Mains</button>
-                <button class="filter-btn" data-filter="desserts">Desserts</button>
-            </div>
-            <div class="menu-grid" id="menuGrid"></div>
-        </div>
-    </section>
-
-    <!-- Gallery -->
-    <section id="gallery">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label">Visual Journey</p>
-                <h2 class="section-title">Gallery</h2>
-            </div>
-            <div class="gallery-grid" id="galleryGrid"></div>
-        </div>
-    </section>
-
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-        <img id="lightboxImg" src="" alt="Gallery view">
-    </div>
-
-    <!-- Reservation -->
-    <section class="reservation-section" id="reservations">
-        <div class="reservation-bg"></div>
-        <div class="container" style="position: relative; z-index: 10;">
-            <div class="section-header">
-                <p class="section-label">Book Your Experience</p>
-                <h2 class="section-title">Reserve a Table</h2>
-            </div>
-            <div class="glass-card" style="max-width: 800px; margin: 0 auto;">
-                <form id="reservationForm" onsubmit="handleReservation(event)">
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label class="form-label">Name</label>
-                            <input type="text" class="form-input" placeholder="Your full name" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-input" placeholder="your@email.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Phone</label>
-                            <input type="tel" class="form-input" placeholder="+91 98765 43210" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Guests</label>
-                            <select class="form-input">
-                                <option>1 Guest</option>
-                                <option selected>2 Guests</option>
-                                <option>3 Guests</option>
-                                <option>4 Guests</option>
-                                <option>5 Guests</option>
-                                <option>6 Guests</option>
-                                <option>7 Guests</option>
-                                <option>8 Guests</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Date</label>
-                            <input type="date" class="form-input" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Time</label>
-                            <input type="time" class="form-input" required>
-                        </div>
-                        <div class="form-group full-width">
-                            <label class="form-label">Special Requests</label>
-                            <textarea class="form-input" placeholder="Allergies, spice preferences (mild/medium/hot), seating preferences..."></textarea>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn-gold" style="width: 100%; margin-top: 1.5rem; padding: 1rem;">
-                        Confirm Reservation
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Toast -->
-    <div class="toast" id="toast">
-        <div class="toast-icon">&#x2713;</div>
-        <div>
-            <p style="font-weight: 600;">Reservation Confirmed!</p>
-            <p style="font-size: 0.875rem; color: rgba(245,245,220,0.6);">We look forward to hosting you.</p>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-transparent" id="navbar">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#home">
+            <i class="bi bi-flower1" style="color: var(--gold);"></i> La Pasta Bella
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav ms-auto gap-2">
+                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+                <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
+                <li class="nav-item"><a class="btn btn-gold btn-sm px-3" href="#reservations">Reserve</a></li>
+            </ul>
         </div>
     </div>
+</nav>
 
-    <!-- Testimonials -->
-    <section id="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label">Guest Experiences</p>
-                <h2 class="section-title">What They Say</h2>
-            </div>
-            <div class="testimonial-card" id="testimonialCard">
-                <div class="stars" id="testimonialStars"></div>
-                <p class="testimonial-text" id="testimonialText"></p>
-                <div class="testimonial-author">
-                    <img id="testimonialImg" src="" alt="">
-                    <div class="testimonial-info">
-                        <p class="testimonial-name" id="testimonialName"></p>
-                        <p class="testimonial-role" id="testimonialRole"></p>
+<!-- HERO -->
+<section class="hero text-center" id="home">
+    <div class="container">
+        <p class="section-label mb-2">Est. 1987 &bull; Tuscany, Italy &bull; Now in Mumbai</p>
+        <h1 class="mb-3">Taste the Soul <span class="gold-text">of Italy</span></h1>
+        <p class="fs-5 mb-4">Where tradition meets Indian warmth in every handcrafted dish</p>
+        <a href="#menu" class="btn btn-gold px-4 me-2">View Menu</a>
+        <a href="#about" class="btn btn-outline-light px-4">Our Story</a>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="bg-dark">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <p class="section-label">Our Story</p>
+                <h2 class="section-title">Three Decades of Excellence</h2>
+                <div class="gold-line" style="margin-left: 0;"></div>
+                <p class="text-light-50">Founded in 1987 by Chef Antonio Rossi in Tuscany, La Pasta Bella shares authentic Italian flavors. Today, our Mumbai outpost brings Indo-Italian fusion using local paneer, Indian spices, and imported Italian cheeses &mdash; creating dishes for the Indian palate.</p>
+                <div class="row g-3 mt-4">
+                    <div class="col-4">
+                        <h3 class="text-gold">35+</h3>
+                        <small>Years of Excellence</small>
+                    </div>
+                    <div class="col-4">
+                        <h3 class="text-gold">2</h3>
+                        <small>Michelin Stars</small>
+                    </div>
+                    <div class="col-4">
+                        <h3 class="text-gold">50K+</h3>
+                        <small>Happy Guests</small>
                     </div>
                 </div>
             </div>
-            <div class="carousel-controls">
-                <button class="carousel-btn" onclick="prevTestimonial()">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path d="M15 19l-7-7 7-7"/>
-                    </svg>
-                </button>
-                <button class="carousel-btn" onclick="nextTestimonial()">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path d="M9 5l7 7-7 7"/>
-                    </svg>
-                </button>
+            <div class="col-lg-6">
+                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80" alt="Restaurant" class="img-fluid rounded">
+                <div class="bg-danger text-center p-3 rounded" style="background: var(--burgundy) !important; width: fit-content; margin-top: -3rem; margin-left: 1rem;">
+                    <div class="text-gold fw-bold" style="color: var(--gold);">Since</div>
+                    <div class="display-6" style="color: var(--cream);">1987</div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="logo">
-                        <svg class="logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2C8 2 5 5 5 9c0 2 1 4 3 5v3a1 1 0 001 1h6a1 1 0 001-1v-3c2-1 3-3 3-5 0-4-3-7-7-7zM9 20h6M9 22h6"/>
-                        </svg>
-                        La Pasta Bella
-                    </div>
-                    <p>Authentic Italian cuisine crafted with passion, tradition, and the finest ingredients since 1987. Now serving Mumbai with an Indo-Italian twist.</p>
-                </div>
-                <div>
-                    <h4 class="footer-heading">Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#menu">Menu</a></li>
-                        <li><a href="#reservations">Reservations</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer-heading">Contact</h4>
-                    <ul class="footer-links footer-contact">
-                        <li>
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                            42, Pali Hill, Bandra West, Mumbai 400050
-                        </li>
-                        <li>
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                            +91 22 2648 0000
-                        </li>
-                        <li>
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                            info@lapastabella.in
-                        </li>
-                        <li>
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                            Tuesday - Sunday: 12 PM - 11 PM
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer-heading">Follow Us</h4>
-                    <div class="social-links">
-                        <a href="#" class="social-link">
-                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link">
-                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 La Pasta Bella. All rights reserved. Crafted with passion in Mumbai.</p>
-            </div>
+<!-- MENU -->
+<section id="menu">
+    <div class="container">
+        <div class="text-center mb-5">
+            <p class="section-label">Culinary Delights</p>
+            <h2 class="section-title">Our Menu</h2>
+            <div class="gold-line"></div>
         </div>
-    </footer>
+        <div class="d-flex justify-content-center gap-2 flex-wrap mb-4">
+            <button class="btn btn-sm btn-gold active filter-btn" onclick="filterMenu('all')">All</button>
+            <button class="btn btn-sm btn-outline-light filter-btn" onclick="filterMenu('veg')">Veg</button>
+            <button class="btn btn-sm btn-outline-light filter-btn" onclick="filterMenu('non-veg')">Non-Veg</button>
+            <button class="btn btn-sm btn-outline-light filter-btn" onclick="filterMenu('starters')">Starters</button>
+            <button class="btn btn-sm btn-outline-light filter-btn" onclick="filterMenu('mains')">Mains</button>
+            <button class="btn btn-sm btn-outline-light filter-btn" onclick="filterMenu('desserts')">Desserts</button>
+        </div>
+        <div class="row g-4" id="menuGrid"></div>
+    </div>
+</section>
 
-    <script>
-        // Menu Data - Indo-Italian Fusion with Verified Image Matches
-        const menuItems = [
-            // Starters - Veg (with matching images)
-            { id: 1, name: "Paneer Tikka Bruschetta", description: "Grilled sourdough topped with tandoori paneer tikka, mint chutney, and cherry tomatoes", price: "&#8377; 220", image: "https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=400&q=80", category: "starters", type: "veg" },
-            { id: 2, name: "Masala Arancini", description: "Crispy risotto balls stuffed with spiced potato and peas, served with tomato chutney", price: "&#8377; 190", image: "https://images.unsplash.com/photo-1541529086526-db283c563270?w=400&q=80", category: "starters", type: "veg" },
-            { id: 3, name: "Cheesy Garlic Naan Bites", description: "Mini naan pockets loaded with mozzarella, cheddar, and garlic butter", price: "&#8377; 180", image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80", category: "starters", type: "veg" },
-            { id: 4, name: "Desi Cheese Fondue", description: "Melty mix of mozzarella and processed cheese with masala spices, served with bread sticks", price: "&#8377; 280", image: "https://images.unsplash.com/photo-1530610476181-d83430b64dcd?w=400&q=80", category: "starters", type: "veg" },
-            
-            // Starters - Non-Veg (with matching images)
-            { id: 5, name: "Chicken Tikka Crostini", description: "Tandoori chicken tikka on toasted ciabatta with mint yogurt and pomegranate", price: "&#8377; 260", image: "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=400&q=80", category: "starters", type: "non-veg" },
-            { id: 6, name: "Tandoori Chicken Wings", description: "Spiced chicken wings roasted in tandoor style, served with peri-peri dip", price: "&#8377; 290", image: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=400&q=80", category: "starters", type: "non-veg" },
-            
-            // Mains - Veg (with matching images)
-            { id: 7, name: "Paneer Makhani Pasta", description: "Penne pasta in rich butter paneer gravy with kasuri methi and cream", price: "&#8377; 320", image: "https://images.unsplash.com/photo-1556761223-4c4282c73f77?w=400&q=80", category: "mains", type: "veg" },
-            { id: 8, name: "Masala Risotto", description: "Creamy arborio rice with Indian spices, roasted vegetables, and parmesan", price: "&#8377; 340", image: "https://images.unsplash.com/photo-1547592180-85f173990554?w=400&q=80", category: "mains", type: "veg" },
-            { id: 9, name: "Tandoori Veg Pizza", description: "Wood-fired pizza with tandoori vegetables, paneer, and desi cheese blend", price: "&#8377; 360", image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80", category: "mains", type: "veg" },
-            { id: 10, name: "Palak Paneer Lasagna", description: "Layers of pasta with creamy palak paneer, ricotta, and mozzarella", price: "&#8377; 340", image: "https://images.unsplash.com/photo-1574868235872-1663edcb4569?w=400&q=80", category: "mains", type: "veg" },
-            
-            // Mains - Non-Veg (with matching images)
-            { id: 11, name: "Butter Chicken Pasta", description: "Spaghetti in rich butter chicken makhani sauce with fresh cream", price: "&#8377; 380", image: "https://images.unsplash.com/photo-1551183053-bf91b1dca034?w=400&q=80", category: "mains", type: "non-veg" },
-            { id: 12, name: "Chicken Tikka Pizza", description: "Wood-fired pizza with tandoori chicken, onions, capsicum, and cheese", price: "&#8377; 390", image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80", category: "mains", type: "non-veg" },
-            { id: 13, name: "Keema Bolognese", description: "Spaghetti with spiced lamb keema in rich tomato sauce with Indian herbs", price: "&#8377; 360", image: "https://images.unsplash.com/photo-1626844131082-256783844137?w=400&q=80", category: "mains", type: "non-veg" },
-            { id: 14, name: "Tandoori Chicken Risotto", description: "Creamy risotto with tandoori chicken pieces, saffron, and parmesan", price: "&#8377; 420", image: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=80", category: "mains", type: "non-veg" },
-            
-            // Desserts (with matching images)
-            { id: 15, name: "Gulab Jamun Cheesecake", description: "Creamy cheesecake with gulab jamun topping, pistachio crust, and rose syrup", price: "&#8377; 220", image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&q=80", category: "desserts", type: "veg" },
-            { id: 16, name: "Masala Chai Tiramisu", description: "Classic tiramisu with masala chai-soaked ladyfingers and cardamom cream", price: "&#8377; 240", image: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&q=80", category: "desserts", type: "veg" },
-            { id: 17, name: "Rasmalai Panna Cotta", description: "Silky panna cotta infused with rasmalai flavors, saffron, and cardamom", price: "&#8377; 210", image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&q=80", category: "desserts", type: "veg" },
-            { id: 18, name: "Chocolate Samosa", description: "Crispy pastry filled with molten chocolate and nuts, served with vanilla ice cream", price: "&#8377; 190", image: "https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=400&q=80", category: "desserts", type: "veg" },
-        ];
+<!-- GALLERY -->
+<section id="gallery" class="bg-dark">
+    <div class="container">
+        <div class="text-center mb-5">
+            <p class="section-label">Visual Journey</p>
+            <h2 class="section-title">Gallery</h2>
+            <div class="gold-line"></div>
+        </div>
+        <div class="row g-3" id="galleryGrid"></div>
+    </div>
+</section>
 
-        // Testimonials Data - Indian reviewers
-        const testimonials = [
-            { id: 1, name: "Priya Sharma", role: "Food Blogger, Mumbai", content: "The Paneer Makhani Pasta is genius! Finally an Italian place that understands the Indian palate. Perfect spice levels and that desi cheese pull!", rating: 5, image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" },
-            { id: 2, name: "Rahul Mehta", role: "Restaurant Critic, Times of India", content: "Butter Chicken Pasta is a game-changer. At these prices, it is the best Indo-Italian fusion in Mumbai. Worth every rupee.", rating: 5, image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" },
-            { id: 3, name: "Ananya Desai", role: "Travel and Leisure India", content: "The Gulab Jamun Cheesecake is divine! Who knew Indian sweets could work so beautifully in Italian desserts? A must-visit in Bandra.", rating: 5, image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" },
-            { id: 4, name: "Vikram Khanna", role: "Master Chef, MasterChef India", content: "The Tandoori Chicken Pizza shows real culinary intelligence. Fusion done right &mdash; respecting both cuisines. And the pricing is very fair.", rating: 5, image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" },
-            { id: 5, name: "Neha Gupta", role: "Wine Enthusiast, Sommelier", content: "Their Masala Chai Tiramisu paired with dessert wine is incredible. Great value for money and authentic flavors.", rating: 5, image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" },
-        ];
-
-        // Gallery Images - Verified Unsplash URLs
-        const galleryImages = [
-            "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80",
-            "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80",
-            "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80",
-            "https://images.unsplash.com/photo-1550966871-3ed3c47e2ce2?w=600&q=80",
-            "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80",
-            "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600&q=80",
-            "https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80",
-            "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&q=80"
-        ];
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-
-            // Parallax hero
-            const heroBg = document.getElementById('heroBg');
-            if (heroBg) {
-                heroBg.style.transform = `translateY(${window.scrollY * 0.5}px) scale(1.1)`;
-            }
-        });
-
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            document.getElementById('mobileMenu').classList.toggle('active');
-        }
-
-        // Scroll to section
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Render Menu
-        function renderMenu(filter = 'all') {
-            const grid = document.getElementById('menuGrid');
-            const filtered = filter === 'all' 
-                ? menuItems 
-                : menuItems.filter(item => item.category === filter || item.type === filter);
-            
-            grid.innerHTML = filtered.map((dish, idx) => `
-                <div class="menu-card" style="animation-delay: ${idx * 0.1}s">
-                    <div class="menu-card-image">
-                        <img src="${dish.image}" alt="${dish.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=400&q=80'">
-                        <span class="badge ${dish.type === 'veg' ? 'badge-veg' : 'badge-nonveg'}">
-                            ${dish.type === 'veg' ? '&#x1F7E2; Veg' : '&#x1F534; Non-Veg'}
-                        </span>
-                    </div>
-                    <div class="menu-card-content">
-                        <div class="menu-card-header">
-                            <h3 class="menu-card-title">${dish.name}</h3>
-                            <span class="menu-card-price">${dish.price}</span>
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+    <div class="container">
+        <div class="text-center mb-5">
+            <p class="section-label">Guest Experiences</p>
+            <h2 class="section-title">What They Say</h2>
+            <div class="gold-line"></div>
+        </div>
+        <div id="testimonialCarousel" class="carousel slide mx-auto" style="max-width: 750px;" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="testimonial-card">
+                        <div class="mb-3"><i class="bi bi-star-fill star"></i> <i class="bi bi-star-fill star"></i> <i class="bi bi-star-fill star"></i> <i class="bi bi-star-fill star"></i> <i class="bi bi-star-fill star"></i></div>
+                        <p class="fst-italic mb-3">"The Paneer Makhani Pasta is genius! Finally an Italian place that understands the Indian palate. Perfect spice levels!"</p>
+                        <div class="d-flex align-items-center gap-2">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="User" class="rounded-circle" width="50">
+                            <div><strong>Priya Sharma</strong><br><small class="text-gold">Food Blogger, Mumbai</small></div>
                         </div>
-                        <p class="menu-card-desc">${dish.description}</p>
                     </div>
                 </div>
-            `).join('');
-
-            // Trigger animations
-            setTimeout(() => {
-                document.querySelectorAll('.menu-card').forEach(card => {
-                    card.classList.add('visible');
-                });
-            }, 50);
-        }
-
-        // Filter buttons
-        document.getElementById('filterButtons').addEventListener('click', (e) => {
-            if (e.target.classList.contains('filter-btn')) {
-                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                e.target.classList.add('active');
-                renderMenu(e.target.dataset.filter);
-            }
-        });
-
-        // Render Gallery
-        function renderGallery() {
-            const grid = document.getElementById('galleryGrid');
-            grid.innerHTML = galleryImages.map((img, idx) => `
-                <div class="gallery-item" style="animation-delay: ${idx * 0.1}s" onclick="openLightbox('${img}')">
-                    <img src="${img}" alt="Gallery ${idx + 1}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=600&q=80'">
-                    <div class="gallery-overlay">
-                        <div class="gallery-plus">+</div>
+                <div class="carousel-item">
+                    <div class="testimonial-card">
+                        <div class="mb-3"><i class="bi bi-star-fill star"></i> <i class="bi bi-star-fill star"></i> <i class="bi bi-star-fill star"></i> <i class="bi bi-star-fill star"></i> <i class="bi bi-star-fill star"></i></div>
+                        <p class="fst-italic mb-3">"Butter Chicken Pasta is a game-changer. At these prices, it is the best Indo-Italian fusion in Mumbai. Worth every rupee!"</p>
+                        <div class="d-flex align-items-center gap-2">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="User" class="rounded-circle" width="50">
+                            <div><strong>Rahul Mehta</strong><br><small class="text-gold">Restaurant Critic, Times of India</small></div>
+                        </div>
                     </div>
                 </div>
-            `).join('');
+                <div class="carousel-item">
+                    <div class="testimonial-card">
+                        <div class="mb-3"><i class="bi bi-star-fill star"></i> <i class="bi bi-star-fill star"></i> <i class="bi bi-star-fill star"></i> <i class="bi bi-star-fill star"></i> <i class="bi bi-star-fill star"></i></div>
+                        <p class="fst-italic mb-3">"The Gulab Jamun Cheesecake is divine! Who knew Indian sweets could work so beautifully in Italian desserts? A must-visit!"</p>
+                        <div class="d-flex align-items-center gap-2">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="User" class="rounded-circle" width="50">
+                            <div><strong>Ananya Desai</strong><br><small class="text-gold">Travel and Leisure India</small></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+        </div>
+    </div>
+</section>
 
-            setTimeout(() => {
-                document.querySelectorAll('.gallery-item').forEach(item => {
-                    item.classList.add('visible');
-                });
-            }, 50);
-        }
+<!-- RESERVATIONS -->
+<section id="reservations" class="bg-dark">
+    <div class="container">
+        <div class="text-center mb-5">
+            <p class="section-label">Book Your Experience</p>
+            <h2 class="section-title">Reserve a Table</h2>
+            <div class="gold-line"></div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="bg-dark-subtle p-4 rounded" style="background: rgba(26, 26, 26, 0.5) !important; border: 1px solid rgba(245, 245, 220, 0.1);">
+                    <form id="reservationForm" onsubmit="handleReservation(event)">
+                        <div class="row g-3">
+                            <div class="col-md-6"><label class="form-label">Name</label><input type="text" class="form-control" required></div>
+                            <div class="col-md-6"><label class="form-label">Email</label><input type="email" class="form-control" required></div>
+                            <div class="col-md-6"><label class="form-label">Phone</label><input type="tel" class="form-control" required></div>
+                            <div class="col-md-6"><label class="form-label">Guests</label><select class="form-select"><option>2 Guests</option><option>1 Guest</option><option>3 Guests</option><option>4+ Guests</option></select></div>
+                            <div class="col-md-6"><label class="form-label">Date</label><input type="date" class="form-control" required></div>
+                            <div class="col-md-6"><label class="form-label">Time</label><input type="time" class="form-control" required></div>
+                            <div class="col-12"><label class="form-label">Special Requests</label><textarea class="form-control" rows="2" placeholder="Allergies, spice preferences..."></textarea></div>
+                            <div class="col-12 text-center"><button type="submit" class="btn btn-gold px-5">Confirm Reservation</button></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-        // Lightbox
-        function openLightbox(src) {
-            document.getElementById('lightboxImg').src = src;
-            document.getElementById('lightbox').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+<!-- FOOTER -->
+<footer class="py-5">
+    <div class="container">
+        <div class="row g-4 mb-4">
+            <div class="col-lg-3">
+                <h5 class="font-serif" style="color: var(--gold);">La Pasta Bella</h5>
+                <p class="small text-light-50">Authentic Italian cuisine since 1987. Now serving Mumbai with Indo-Italian fusion.</p>
+                <div class="d-flex gap-2">
+                    <a href="#" class="social-btn"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="social-btn"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="social-btn"><i class="bi bi-twitter-x"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <h6 class="footer-title">Quick Links</h6>
+                <a href="#home" class="footer-link d-block">Home</a>
+                <a href="#about" class="footer-link d-block">About Us</a>
+                <a href="#menu" class="footer-link d-block">Menu</a>
+                <a href="#gallery" class="footer-link d-block">Gallery</a>
+            </div>
+            <div class="col-lg-3">
+                <h6 class="footer-title">Contact</h6>
+                <p class="small text-light-50 mb-1"><i class="bi bi-geo-alt-fill" style="color: var(--gold);"></i> 42 Pali Hill, Bandra West, Mumbai</p>
+                <p class="small text-light-50 mb-1"><i class="bi bi-telephone-fill" style="color: var(--gold);"></i> +91 22 2648 0000</p>
+                <p class="small text-light-50"><i class="bi bi-clock-fill" style="color: var(--gold);"></i> Tuesday - Sunday: 12 PM - 11 PM</p>
+            </div>
+            <div class="col-lg-3">
+                <h6 class="footer-title">Follow Us</h6>
+                <p class="small text-light-50">info@lapastabella.in</p>
+            </div>
+        </div>
+        <hr class="bg-light-50">
+        <p class="text-center small text-light-50 mb-0">&copy; 2026 La Pasta Bella. All rights reserved.</p>
+    </div>
+</footer>
 
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-            document.body.style.overflow = '';
-        }
+<!-- TOAST -->
+<div class="toast-custom" id="toast"><i class="bi bi-check-circle" style="color: var(--gold);"></i> &nbsp; Reservation Confirmed!</div>
 
-        // Testimonials Carousel
-        let currentTestimonial = 0;
-        let testimonialInterval;
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const menuItems = [
+    { id: 1, name: "Paneer Tikka Bruschetta", desc: "Grilled sourdough with tandoori paneer", price: "&#8377; 220", img: "https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=400&q=80", cat: "starters", type: "veg" },
+    { id: 2, name: "Masala Arancini", desc: "Crispy risotto balls with spiced potato", price: "&#8377; 190", img: "https://images.unsplash.com/photo-1541529086526-db283c563270?w=400&q=80", cat: "starters", type: "veg" },
+    { id: 3, name: "Paneer Makhani Pasta", desc: "Penne in butter paneer gravy", price: "&#8377; 320", img: "https://images.unsplash.com/photo-1556761223-4c4282c73f77?w=400&q=80", cat: "mains", type: "veg" },
+    { id: 4, name: "Masala Risotto", desc: "Creamy arborio rice with Indian spices", price: "&#8377; 340", img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=400&q=80", cat: "mains", type: "veg" },
+    { id: 5, name: "Butter Chicken Pasta", desc: "Spaghetti in butter chicken sauce", price: "&#8377; 380", img: "https://images.unsplash.com/photo-1551183053-bf91b1dca034?w=400&q=80", cat: "mains", type: "non-veg" },
+    { id: 6, name: "Tandoori Chicken Wings", desc: "Spiced chicken roasted in tandoor", price: "&#8377; 290", img: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=400&q=80", cat: "starters", type: "non-veg" },
+    { id: 7, name: "Gulab Jamun Cheesecake", desc: "Cheesecake with gulab jamun topping", price: "&#8377; 220", img: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&q=80", cat: "desserts", type: "veg" },
+    { id: 8, name: "Masala Chai Tiramisu", desc: "Tiramisu with masala chai flavors", price: "&#8377; 240", img: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&q=80", cat: "desserts", type: "veg" },
+];
 
-        function renderTestimonial(index) {
-            const t = testimonials[index];
-            document.getElementById('testimonialText').textContent = '"' + t.content + '"';
-            document.getElementById('testimonialName').textContent = t.name;
-            document.getElementById('testimonialRole').textContent = t.role;
-            document.getElementById('testimonialImg').src = t.image;
-            document.getElementById('testimonialImg').alt = t.name;
-            
-            const starsContainer = document.getElementById('testimonialStars');
-            starsContainer.innerHTML = Array(t.rating).fill(`
-                <svg class="star" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                </svg>
-            `).join('');
-        }
+const galleryImages = [
+    "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80",
+    "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80",
+    "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80",
+    "https://images.unsplash.com/photo-1550966871-3ed3c47e2ce2?w=600&q=80",
+    "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80",
+    "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600&q=80",
+];
 
-        function nextTestimonial() {
-            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-            renderTestimonial(currentTestimonial);
-            resetInterval();
-        }
+function renderMenu(filter = 'all') {
+    const filtered = filter === 'all' ? menuItems : menuItems.filter(m => m.cat === filter || m.type === filter);
+    document.getElementById('menuGrid').innerHTML = filtered.map(m => `
+        <div class="col-md-6 col-lg-4">
+            <div class="menu-card">
+                <div style="position: relative;">
+                    <img src="${m.img}" class="card-img-top">
+                    <span class="badge ${m.type === 'veg' ? 'badge-veg' : 'badge-nonveg'}" style="position: absolute; top: 10px; right: 10px;">
+                        ${m.type === 'veg' ? '&#x1F7E2; Veg' : '&#x1F534; Non-Veg'}
+                    </span>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">${m.name}</h5>
+                    <p class="card-text small text-light-50">${m.desc}</p>
+                    <div class="price">${m.price}</div>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
 
-        function prevTestimonial() {
-            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
-            renderTestimonial(currentTestimonial);
-            resetInterval();
-        }
+function filterMenu(cat) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('btn-gold'));
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.add('btn-outline-light'));
+    event.target.classList.add('btn-gold');
+    event.target.classList.remove('btn-outline-light');
+    renderMenu(cat);
+}
 
-        function resetInterval() {
-            clearInterval(testimonialInterval);
-            testimonialInterval = setInterval(nextTestimonial, 5000);
-        }
+function renderGallery() {
+    document.getElementById('galleryGrid').innerHTML = galleryImages.map(img => `
+        <div class="col-md-6 col-lg-4">
+            <img src="${img}" class="gallery-img" onclick="alert('Gallery image')">
+        </div>
+    `).join('');
+}
 
-        // Reservation Form
-        function handleReservation(e) {
-            e.preventDefault();
-            document.getElementById('toast').classList.add('show');
-            e.target.reset();
-            setTimeout(() => {
-                document.getElementById('toast').classList.remove('show');
-            }, 3000);
-        }
+function handleReservation(e) {
+    e.preventDefault();
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
+    e.target.reset();
+}
 
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            renderMenu();
-            renderGallery();
-            renderTestimonial(0);
-            testimonialInterval = setInterval(nextTestimonial, 5000);
-
-            // Observe elements
-            document.querySelectorAll('.about-text, .about-image, .reveal').forEach(el => {
-                observer.observe(el);
-            });
-        });
-
-        // Keyboard navigation for lightbox
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeLightbox();
-        });
-    </script>
+document.addEventListener('DOMContentLoaded', () => {
+    renderMenu();
+    renderGallery();
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+});
+</script>
 </body>
 </html>
