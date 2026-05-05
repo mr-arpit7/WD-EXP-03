@@ -1,439 +1,375 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>La Pasta Bella | Simple Menu</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Pasta Bella | Authentic Italian</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Core Variables & Typography --- */
+        :root { 
+            --gold: #D4AF37; 
+            --bg: #1a1a1a; 
+            --cream: #F5F5DC; 
+        }
 
-  <!-- Simple Google fonts (optional, loads normally on GitHub Pages) -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg); 
+            color: var(--cream); 
+            scroll-behavior: smooth; 
+        }
 
-  <style>
-    /* ---- Simple, beginner-friendly styling ---- */
-    :root{
-      --bg:#0f0f0f;
-      --card:#141414;
-      --muted:#bdbdb7;
-      --accent:#d4af37;
-      --cream:#f5f5dc;
-      --green:#2ecc71;
-      --red:#ff5c5c;
-      --max-width:1100px;
-    }
+        .font-serif { 
+            font-family: 'Playfair Display', serif; 
+        }
 
-    *{box-sizing:border-box}
-    body{
-      background:var(--bg);
-      color:var(--cream);
-      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      line-height:1.45;
-      padding:24px;
-      margin:0;
-    }
+        .text-gold { color: var(--gold); }
+        .text-cream { color: var(--cream) !important; }
 
-    header{
-      max-width:var(--max-width);
-      margin:0 auto 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-    }
+        .bg-gold { 
+            background-color: var(--gold); 
+            color: var(--bg); 
+            font-weight: 600; 
+            text-transform: uppercase; 
+        }
+        
+        /* --- Layout & Effects --- */
+        .glass { 
+            background: rgba(26, 26, 26, 0.6); 
+            backdrop-filter: blur(16px); 
+            border: 1px solid rgba(245, 245, 220, 0.08); 
+        }
 
-    .brand{
-      display:flex;
-      gap:12px;
-      align-items:center;
-    }
+        .hover-lift { 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        }
 
-    .logo{
-      width:44px;
-      height:44px;
-      display:inline-grid;
-      place-items:center;
-      background:linear-gradient(135deg,#d4af37,#c79b2f);
-      color:#111;
-      border-radius:999px;
-      font-family: 'Playfair Display', serif;
-      font-weight:600;
-    }
+        .hover-lift:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); 
+            border-color: rgba(212, 175, 55, 0.4); 
+        }
 
-    h1{
-      font-family: 'Playfair Display', serif;
-      font-size:20px;
-      letter-spacing:0.4px;
-    }
+        .hero-bg { 
+            background: linear-gradient(rgba(26, 26, 26, 0.6), var(--bg)), 
+                        url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1920&q=80') center/cover fixed; 
+        }
+        
+        /* --- Forms & Inputs --- */
+        .form-control, .form-select { 
+            background: rgba(0, 0, 0, 0.4); 
+            border: 1px solid rgba(245, 245, 220, 0.15); 
+            color: var(--cream); 
+            transition: all 0.3s; 
+        }
 
-    nav{
-      font-size:14px;
-    }
+        .form-control:focus, .form-select:focus { 
+            background: rgba(0, 0, 0, 0.6); 
+            border-color: var(--gold); 
+            color: var(--cream); 
+            box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.15); 
+        }
 
-    nav a{
-      color:var(--muted);
-      text-decoration:none;
-      margin-left:14px;
-    }
-    nav a:hover{ color:var(--cream) }
+        .form-control::placeholder { 
+            color: rgba(245, 245, 220, 0.4); 
+        }
+        
+        /* --- Scrollbar --- */
+        ::-webkit-scrollbar { 
+            width: 8px; 
+        } 
+        
+        ::-webkit-scrollbar-track { 
+            background: var(--bg); 
+        } 
+        
+        ::-webkit-scrollbar-thumb { 
+            background: var(--gold); 
+            border-radius: 4px; 
+        }
 
-    main{
-      max-width:var(--max-width);
-      margin:0 auto;
-    }
-
-    /* filter buttons (non-functional, visual only) */
-    .filters{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin:18px 0 26px;
-    }
-
-    .filter{
-      background:#1a1a1a;
-      border-radius:22px;
-      padding:8px 14px;
-      font-size:13px;
-      color:var(--muted);
-      border:1px solid rgba(255,255,255,0.03);
-    }
-
-    .filter.all{
-      background:var(--accent);
-      color:#111;
-      font-weight:600;
-    }
-
-    /* simple card grid */
-    .grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:20px;
-    }
-
-    @media(min-width:720px){
-      .grid{ grid-template-columns:repeat(2,1fr) }
-    }
-
-    .card{
-      background:var(--card);
-      border-radius:12px;
-      overflow:hidden;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
-      border:1px solid rgba(255,255,255,0.02);
-    }
-
-    .card .photo{
-      display:block;
-      width:100%;
-      aspect-ratio: 16/9;
-      object-fit:cover;
-      background:#222;
-    }
-
-    .card-content{
-      padding:18px;
-    }
-
-    .meta{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      margin-bottom:8px;
-    }
-
-    .title{
-      font-family: 'Playfair Display', serif;
-      font-size:20px;
-      color:var(--cream);
-    }
-
-    .price{
-      color:var(--accent);
-      font-weight:700;
-      font-size:18px;
-    }
-
-    .desc{
-      color:var(--muted);
-      font-size:14px;
-      margin-top:8px;
-    }
-
-    /* badges */
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:6px 10px;
-      background:rgba(255,255,255,0.02);
-      border-radius:18px;
-      font-size:13px;
-      color:var(--muted);
-      border:1px solid rgba(255,255,255,0.02);
-    }
-
-    .badge .dot{
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      display:inline-block;
-    }
-
-    .badge.veg .dot{ background:var(--green) }
-    .badge.nonveg .dot{ background:var(--red) }
-
-    /* footer info cards */
-    .info{
-      margin-top:28px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-
-    .info .row{
-      background:#121212;
-      padding:14px 16px;
-      border-radius:14px;
-      color:var(--muted);
-      display:flex;
-      gap:12px;
-      align-items:center;
-      border:1px solid rgba(255,255,255,0.02);
-    }
-
-    .info .row strong{ color:var(--cream) }
-    .info .icon{ width:28px; height:28px; display:inline-grid; place-items:center; font-size:18px; color:var(--accent) }
-
-    footer{
-      max-width:var(--max-width);
-      margin:32px auto 18px;
-      color:var(--muted);
-      font-size:14px;
-      padding:10px 0;
-      border-top:1px solid rgba(255,255,255,0.02);
-    }
-
-    /* small, beginner touches */
-    .small-note{ color:var(--muted); font-size:13px; margin-top:6px }
-  </style>
+        /* --- Lightbox --- */
+        #lightbox { 
+            display: none; 
+            position: fixed; 
+            inset: 0; 
+            background: rgba(0, 0, 0, 0.95); 
+            z-index: 2000; 
+            align-items: center; 
+            justify-content: center; 
+            cursor: zoom-out; 
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <div class="brand">
-      <div class="logo" aria-hidden="true">LP</div>
-      <div>
-        <h1>La Pasta Bella</h1>
-        <div class="small-note">Simple menu • Beginner-friendly layout</div>
-      </div>
-    </div>
+<body data-bs-spy="scroll" data-bs-target="#navbar">
 
-    <nav>
-      <a href="#menu">Menu</a>
-      <a href="#info">Info</a>
-      <a href="#contact">Contact</a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top glass py-3" id="navbar">
+        <div class="container">
+            <a class="navbar-brand font-serif text-cream fs-3" href="#">⭐ La Pasta Bella</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto gap-3 align-items-center text-uppercase" style="font-size: 0.85rem; letter-spacing: 0.1em;">
+                    <li class="nav-item"><a class="nav-link text-white" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#menu">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="btn bg-gold rounded-pill px-4" href="#reserve">Reserve</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
-  </header>
 
-  <main>
-    <section id="menu">
-      <div class="filters" aria-hidden="true">
-        <div class="filter all">ALL</div>
-        <div class="filter">PASTA</div>
-        <div class="filter">PIZZA</div>
-        <div class="filter">STARTERS</div>
-        <div class="filter">MAINS</div>
-        <div class="filter">DESSERTS</div>
-        <div class="filter">VEG</div>
-        <div class="filter">NON-VEG</div>
-      </div>
-
-      <div class="grid" role="list">
-        <!-- Card 1 -->
-        <article class="card" role="listitem">
-          <img class="photo" src="https://source.unsplash.com/1200x800/?paneer-tikka" alt="Paneer Tikka" loading="lazy">
-          <div class="card-content">
-            <div class="meta">
-              <div>
-                <div class="title">Paneer Tikka Appetizer</div>
-                <div class="small-note">Smoky, grilled cottage cheese with classic spices</div>
-              </div>
-              <div style="text-align:right">
-                <div class="price">₹320</div>
-                <div style="margin-top:8px;"><span class="badge veg"><span class="dot"></span>VEG</span></div>
-              </div>
-            </div>
-            <p class="desc">Charred paneer cubes marinated in yogurt and spices.</p>
-          </div>
-        </article>
-
-        <!-- Card 2 -->
-        <article class="card" role="listitem">
-          <img class="photo" src="https://source.unsplash.com/1200x800/?garlic-bread" alt="Garlic Bread" loading="lazy">
-          <div class="card-content">
-            <div class="meta">
-              <div>
-                <div class="title">Garlic Bread</div>
-                <div class="small-note">Crispy oven-toasted garlic bread</div>
-              </div>
-              <div style="text-align:right">
-                <div class="price">₹150</div>
-                <div style="margin-top:8px;"><span class="badge veg"><span class="dot"></span>VEG</span></div>
-              </div>
-            </div>
-            <p class="desc">Buttery garlic slices with oregano and cheese on top.</p>
-          </div>
-        </article>
-
-        <!-- Card 3 -->
-        <article class="card" role="listitem">
-          <img class="photo" src="https://source.unsplash.com/1200x800/?paneer-pasta" alt="Paneer Makhani Pasta" loading="lazy">
-          <div class="card-content">
-            <div class="meta">
-              <div>
-                <div class="title">Paneer Makhani Pasta</div>
-                <div class="small-note">House-made cottage cheese in tomato-butter gravy with rigatoni</div>
-              </div>
-              <div style="text-align:right">
-                <div class="price">₹280</div>
-                <div style="margin-top:8px;"><span class="badge veg"><span class="dot"></span>VEG</span></div>
-              </div>
-            </div>
-            <p class="desc">Comforting fusion of Indian makhani sauce with pasta.</p>
-          </div>
-        </article>
-
-        <!-- Card 4 -->
-        <article class="card" role="listitem">
-          <img class="photo" src="https://source.unsplash.com/1200x800/?butter-chicken-pasta" alt="Butter Chicken Pasta" loading="lazy">
-          <div class="card-content">
-            <div class="meta">
-              <div>
-                <div class="title">Butter Chicken Pasta</div>
-                <div class="small-note">Creamy murgh makhani sauce with penne</div>
-              </div>
-              <div style="text-align:right">
-                <div class="price">₹320</div>
-                <div style="margin-top:8px;"><span class="badge nonveg"><span class="dot"></span>NON-VEG</span></div>
-              </div>
-            </div>
-            <p class="desc">Finished with kasuri methi and fresh cream for richness.</p>
-          </div>
-        </article>
-
-        <!-- Card 5 -->
-        <article class="card" role="listitem">
-          <img class="photo" src="https://source.unsplash.com/1200x800/?vegetable-risotto" alt="Vegetable Risotto" loading="lazy">
-          <div class="card-content">
-            <div class="meta">
-              <div>
-                <div class="title">Vegetable Risotto</div>
-                <div class="small-note">Creamy arborio rice cooked with seasonal vegetables</div>
-              </div>
-              <div style="text-align:right">
-                <div class="price">₹380</div>
-                <div style="margin-top:8px;"><span class="badge veg"><span class="dot"></span>VEG</span></div>
-              </div>
-            </div>
-            <p class="desc">Comforting and silky risotto with parmesan (optional).</p>
-          </div>
-        </article>
-
-        <!-- Card 6 -->
-        <article class="card" role="listitem">
-          <img class="photo" src="https://source.unsplash.com/1200x800/?chicken-skewers" alt="Grilled Chicken Skewers" loading="lazy">
-          <div class="card-content">
-            <div class="meta">
-              <div>
-                <div class="title">Grilled Chicken Skewers</div>
-                <div class="small-note">Marinated chicken grilled with peppers</div>
-              </div>
-              <div style="text-align:right">
-                <div class="price">₹420</div>
-                <div style="margin-top:8px;"><span class="badge nonveg"><span class="dot"></span>NON-VEG</span></div>
-              </div>
-            </div>
-            <p class="desc">Served with a light herb dip.</p>
-          </div>
-        </article>
-
-        <!-- Card 7 -->
-        <article class="card" role="listitem">
-          <img class="photo" src="https://source.unsplash.com/1200x800/?tiramisu" alt="Tiramisu" loading="lazy">
-          <div class="card-content">
-            <div class="meta">
-              <div>
-                <div class="title">Tiramisu</div>
-                <div class="small-note">Classic Italian coffee dessert</div>
-              </div>
-              <div style="text-align:right">
-                <div class="price">₹240</div>
-                <div style="margin-top:8px;"><span class="badge"><span class="dot" style="background:#c0b390"></span>DESSERT</span></div>
-              </div>
-            </div>
-            <p class="desc">Layered with mascarpone and espresso-soaked biscuits.</p>
-          </div>
-        </article>
-
-        <!-- Card 8 -->
-        <article class="card" role="listitem">
-          <img class="photo" src="https://source.unsplash.com/1200x800/?chocolate-lava-cake" alt="Chocolate Lava Cake" loading="lazy">
-          <div class="card-content">
-            <div class="meta">
-              <div>
-                <div class="title">Chocolate Lava Cake</div>
-                <div class="small-note">Warm molten chocolate cake</div>
-              </div>
-              <div style="text-align:right">
-                <div class="price">₹260</div>
-                <div style="margin-top:8px;"><span class="badge"><span class="dot" style="background:#c0b390"></span>DESSERT</span></div>
-              </div>
-            </div>
-            <p class="desc">Served with vanilla ice cream.</p>
-          </div>
-        </article>
-
-      </div> <!-- .grid -->
+    <!-- Hero -->
+    <section id="home" class="hero-bg vh-100 d-flex align-items-center text-center">
+        <div class="container mt-5">
+            <p class="text-gold text-uppercase tracking-widest mb-3">Est. 1987 • Tuscany • Now in Mumbai</p>
+            <h1 class="display-1 font-serif fw-bold mb-4">Taste the Soul<br><span class="text-gold">of Italy</span></h1>
+            <p class="lead opacity-75 mb-5 mx-auto" style="max-width: 600px;">Timeless tradition and authentic flavors in every handcrafted dish.</p>
+            <a href="#menu" class="btn bg-gold rounded-pill px-5 py-3 me-2 hover-lift">View Menu</a>
+        </div>
     </section>
 
-    <section id="info" class="info" aria-label="Restaurant information">
-      <div class="row">
-        <div class="icon">📍</div>
-        <div>Bandra West, Mumbai, Maharashtra</div>
-      </div>
-
-      <div class="row">
-        <div class="icon">⏰</div>
-        <div>Mon–Sun: 12 PM – 11 PM</div>
-      </div>
-
-      <div id="contact" class="row">
-        <div class="icon">📞</div>
-        <div>+91 22 6789 0123</div>
-      </div>
-
-      <div class="row" style="justify-content:space-between;align-items:center">
-        <div>
-          <div style="font-weight:600;color:var(--cream)">Special requests</div>
-          <div class="small-note">Any dietary requirements, allergies or special occasions? Mention them when you call.</div>
+    <!-- About -->
+    <section id="about" class="py-5 my-5">
+        <div class="container py-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <p class="text-gold text-uppercase mb-2">Our Story</p>
+                    <h2 class="display-4 font-serif mb-4">Three Decades of Excellence</h2>
+                    <p class="fs-5 opacity-75 mb-4">Founded in 1987 by Chef Antonio Rossi in Tuscany, we share unadulterated, authentic Italian flavors. Today, our Mumbai outpost uses imported cheeses, San Marzano tomatoes, and handmade pasta to transport you to Italy.</p>
+                    <div class="d-flex gap-4">
+                        <div>
+                            <h3 class="font-serif text-gold fs-1">35+</h3>
+                            <p class="opacity-50 small">Years</p>
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-gold fs-1">2</h3>
+                            <p class="opacity-50 small">Michelin Stars</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" class="w-100 rounded-4 shadow-lg" alt="Interior" style="height: 500px; object-fit: cover;">
+                </div>
+            </div>
         </div>
-        <div style="text-align:right">
-          <button style="background:var(--accent);border:none;padding:10px 14px;border-radius:22px;color:#111;font-weight:600;cursor:default">Confirm Reservation</button>
-        </div>
-      </div>
     </section>
 
-  </main>
-
-  <footer>
-    <div style="max-width:var(--max-width);margin:0 auto;padding:14px 0;">
-      <div style="display:flex;gap:12px;align-items:center">
-        <div class="logo" style="width:36px;height:36px;font-size:14px">LP</div>
-        <div>
-          <div style="font-family:'Playfair Display',serif;font-size:16px;color:var(--cream)">La Pasta Bella</div>
-          <div class="small-note">Where the flavors of Tuscany meet the vibrant spirit of Mumbai.</div>
+    <!-- Menu -->
+    <section id="menu" class="py-5 bg-black">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <p class="text-gold text-uppercase mb-2">Culinary Delights</p>
+                <h2 class="display-4 font-serif">Our Menu</h2>
+            </div>
+            
+            <!-- Filters -->
+            <div class="d-flex flex-wrap justify-content-center gap-2 mb-5" id="filters">
+                <button class="btn btn-outline-light rounded-pill px-4 active" data-filter="all">All</button>
+                <button class="btn btn-outline-light rounded-pill px-4" data-filter="veg">Veg</button>
+                <button class="btn btn-outline-light rounded-pill px-4" data-filter="non-veg">Non-Veg</button>
+            </div>
+            
+            <!-- Menu Grid -->
+            <div class="row g-4" id="menuGrid">
+                <!-- Javascript injects menu items here -->
+            </div>
         </div>
-      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="display-4 font-serif">Gallery</h2>
+            </div>
+            <div class="row g-3" id="galleryGrid">
+                <!-- Javascript injects gallery items here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" onclick="this.style.display='none'">
+        <img id="lb-img" class="rounded-3 shadow-lg" style="max-height: 85vh; max-width: 90vw;">
     </div>
-  </footer>
+
+    <!-- Reservation -->
+    <section id="reserve" class="py-5 bg-black">
+        <div class="container py-5">
+            <div class="glass p-4 p-lg-5 rounded-4 mx-auto shadow-lg" style="max-width: 850px;">
+                <div class="text-center mb-5">
+                    <h2 class="font-serif text-gold display-5 mb-2">Reserve a Table</h2>
+                    <p class="opacity-75">Join us for an unforgettable dining experience.</p>
+                </div>
+                
+                <form onsubmit="event.preventDefault(); alert('Grazie! Your reservation is confirmed. We look forward to hosting you.'); this.reset();">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control py-3 px-4 rounded-3" placeholder="Full Name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" class="form-control py-3 px-4 rounded-3" placeholder="Email Address" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="tel" class="form-control py-3 px-4 rounded-3" placeholder="Phone Number" required>
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-select py-3 px-4 rounded-3 text-white" style="background-color: rgba(0,0,0,0.6);" required>
+                                <option value="">Number of Guests</option>
+                                <option value="2">2 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="6">6+ Guests (Private Dining)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="date" class="form-control py-3 px-4 rounded-3" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="time" class="form-control py-3 px-4 rounded-3" required>
+                        </div>
+                        <div class="col-12">
+                            <textarea class="form-control py-3 px-4 rounded-3" rows="2" placeholder="Special Requests (Allergies, Occasions, etc.)"></textarea>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button class="btn bg-gold w-100 py-3 rounded-3 fs-5 hover-lift shadow">Confirm Reservation</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 border-top border-secondary text-center">
+        <p class="opacity-50 small mb-0">© 2026 La Pasta Bella. Authentic Italian in Mumbai.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // --- Data Structure ---
+        const menu = [
+            { 
+                name: "Bruschetta al Pomodoro", 
+                desc: "Grilled bread, San Marzano tomatoes, fresh basil, extra virgin olive oil.", 
+                price: "₹550", 
+                img: "1572695157366-5e585ab2b69f", 
+                type: "veg" 
+            },
+            { 
+                name: "Caprese Salad", 
+                desc: "Buffalo mozzarella, vine-ripened tomatoes, sweet basil, sea salt.", 
+                price: "₹650", 
+                img: "1529312266912-b33cfce2eefd", 
+                type: "veg" 
+            },
+            { 
+                name: "Calamari Fritti", 
+                desc: "Tender fried squid rings dusted in seasoned flour with lemon aioli.", 
+                price: "₹850", 
+                img: "1604908176997-125f25cc6f3d", 
+                type: "non-veg" 
+            },
+            { 
+                name: "Pizza Margherita", 
+                desc: "Wood-fired with San Marzano sauce, fresh mozzarella, and basil leaves.", 
+                price: "₹900", 
+                img: "1574071318508-1cdbab80d002", 
+                type: "veg" 
+            },
+            { 
+                name: "Fettuccine Alfredo", 
+                desc: "Hand-rolled pasta tossed in a rich Parmigiano-Reggiano cream sauce.", 
+                price: "₹1100", 
+                img: "1612874742237-6526221588e3", 
+                type: "non-veg" 
+            },
+            { 
+                name: "Classic Tiramisu", 
+                desc: "Espresso-soaked ladyfingers layered with whipped mascarpone cream.", 
+                price: "₹600", 
+                img: "1571877227200-a0d98ea607e9", 
+                type: "veg" 
+            }
+        ];
+
+        const gallery = [
+            "1414235077428-338989a2e8c0", 
+            "1559339352-11d035aa65de", 
+            "1555396273-367ea4eb4db5", 
+            "1544025162-d76694265947"
+        ];
+
+        // --- Render Menu ---
+        function renderMenu(filter) {
+            const grid = document.getElementById('menuGrid');
+            const filteredMenu = menu.filter(item => filter === 'all' || item.type === filter);
+            
+            grid.innerHTML = filteredMenu.map(item => `
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass rounded-4 h-100 hover-lift overflow-hidden position-relative d-flex flex-column">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-${item.img}?auto=format&fit=crop&w=400&q=80" class="w-100" style="height:220px; object-fit:cover;" alt="${item.name}">
+                            <span class="position-absolute top-0 end-0 m-3 badge ${item.type === 'veg' ? 'bg-success' : 'bg-danger'} bg-opacity-75 px-3 py-2 rounded-pill shadow-sm">
+                                ${item.type === 'veg' ? 'Veg' : 'Non-Veg'}
+                            </span>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <h4 class="font-serif text-cream m-0">${item.name}</h4>
+                                <span class="text-gold fw-bold fs-5">${item.price}</span>
+                            </div>
+                            <hr class="border-secondary opacity-25 my-3">
+                            <p class="opacity-75 small m-0 flex-grow-1 lh-lg">${item.desc}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // --- Render Gallery ---
+        document.getElementById('galleryGrid').innerHTML = gallery.map(imgId => `
+            <div class="col-6 col-md-3">
+                <img src="https://images.unsplash.com/photo-${imgId}?auto=format&fit=crop&w=400&q=80" 
+                     class="w-100 rounded-4 shadow-sm hover-lift" 
+                     style="height:250px; object-fit:cover; cursor:pointer;"
+                     onclick="document.getElementById('lb-img').src='https://images.unsplash.com/photo-${imgId}?auto=format&fit=crop&w=1200&q=90'; document.getElementById('lightbox').style.display='flex';"
+                     alt="Gallery Image">
+            </div>
+        `).join('');
+
+        // --- Filter Button Logic ---
+        document.getElementById('filters').addEventListener('click', event => {
+            if(event.target.tagName === 'BUTTON') {
+                // Remove active classes from all buttons
+                document.querySelectorAll('#filters .btn').forEach(btn => {
+                    btn.classList.remove('active', 'bg-light', 'text-dark');
+                });
+                
+                // Add active classes to clicked button
+                event.target.classList.add('active', 'bg-light', 'text-dark');
+                
+                // Re-render menu
+                renderMenu(event.target.dataset.filter);
+            }
+        });
+
+        // Initialize the page
+        renderMenu('all');
+    </script>
 </body>
 </html>
