@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>La Pasta Bella | Simple Menu</title>
+
+  <!-- Simple Google fonts (optional, loads normally on GitHub Pages) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---- Simple, beginner-friendly styling ---- */
+    :root{
+      --bg:#0f0f0f;
+      --card:#141414;
+      --muted:#bdbdb7;
+      --accent:#d4af37;
+      --cream:#f5f5dc;
+      --green:#2ecc71;
+      --red:#ff5c5c;
+      --max-width:1100px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      background:var(--bg);
+      color:var(--cream);
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      line-height:1.45;
+      padding:24px;
+      margin:0;
+    }
+
+    header{
+      max-width:var(--max-width);
+      margin:0 auto 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+
+    .logo{
+      width:44px;
+      height:44px;
+      display:inline-grid;
+      place-items:center;
+      background:linear-gradient(135deg,#d4af37,#c79b2f);
+      color:#111;
+      border-radius:999px;
+      font-family: 'Playfair Display', serif;
+      font-weight:600;
+    }
+
+    h1{
+      font-family: 'Playfair Display', serif;
+      font-size:20px;
+      letter-spacing:0.4px;
+    }
+
+    nav{
+      font-size:14px;
+    }
+
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      margin-left:14px;
+    }
+    nav a:hover{ color:var(--cream) }
+
+    main{
+      max-width:var(--max-width);
+      margin:0 auto;
+    }
+
+    /* filter buttons (non-functional, visual only) */
+    .filters{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:18px 0 26px;
+    }
+
+    .filter{
+      background:#1a1a1a;
+      border-radius:22px;
+      padding:8px 14px;
+      font-size:13px;
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    .filter.all{
+      background:var(--accent);
+      color:#111;
+      font-weight:600;
+    }
+
+    /* simple card grid */
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:20px;
+    }
+
+    @media(min-width:720px){
+      .grid{ grid-template-columns:repeat(2,1fr) }
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+
+    .card .photo{
+      display:block;
+      width:100%;
+      aspect-ratio: 16/9;
+      object-fit:cover;
+      background:#222;
+    }
+
+    .card-content{
+      padding:18px;
+    }
+
+    .meta{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-bottom:8px;
+    }
+
+    .title{
+      font-family: 'Playfair Display', serif;
+      font-size:20px;
+      color:var(--cream);
+    }
+
+    .price{
+      color:var(--accent);
+      font-weight:700;
+      font-size:18px;
+    }
+
+    .desc{
+      color:var(--muted);
+      font-size:14px;
+      margin-top:8px;
+    }
+
+    /* badges */
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      background:rgba(255,255,255,0.02);
+      border-radius:18px;
+      font-size:13px;
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+
+    .badge .dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      display:inline-block;
+    }
+
+    .badge.veg .dot{ background:var(--green) }
+    .badge.nonveg .dot{ background:var(--red) }
+
+    /* footer info cards */
+    .info{
+      margin-top:28px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .info .row{
+      background:#121212;
+      padding:14px 16px;
+      border-radius:14px;
+      color:var(--muted);
+      display:flex;
+      gap:12px;
+      align-items:center;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+
+    .info .row strong{ color:var(--cream) }
+    .info .icon{ width:28px; height:28px; display:inline-grid; place-items:center; font-size:18px; color:var(--accent) }
+
+    footer{
+      max-width:var(--max-width);
+      margin:32px auto 18px;
+      color:var(--muted);
+      font-size:14px;
+      padding:10px 0;
+      border-top:1px solid rgba(255,255,255,0.02);
+    }
+
+    /* small, beginner touches */
+    .small-note{ color:var(--muted); font-size:13px; margin-top:6px }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo" aria-hidden="true">LP</div>
+      <div>
+        <h1>La Pasta Bella</h1>
+        <div class="small-note">Simple menu • Beginner-friendly layout</div>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#menu">Menu</a>
+      <a href="#info">Info</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="menu">
+      <div class="filters" aria-hidden="true">
+        <div class="filter all">ALL</div>
+        <div class="filter">PASTA</div>
+        <div class="filter">PIZZA</div>
+        <div class="filter">STARTERS</div>
+        <div class="filter">MAINS</div>
+        <div class="filter">DESSERTS</div>
+        <div class="filter">VEG</div>
+        <div class="filter">NON-VEG</div>
+      </div>
+
+      <div class="grid" role="list">
+        <!-- Card 1 -->
+        <article class="card" role="listitem">
+          <img class="photo" src="https://source.unsplash.com/1200x800/?paneer-tikka" alt="Paneer Tikka" loading="lazy">
+          <div class="card-content">
+            <div class="meta">
+              <div>
+                <div class="title">Paneer Tikka Appetizer</div>
+                <div class="small-note">Smoky, grilled cottage cheese with classic spices</div>
+              </div>
+              <div style="text-align:right">
+                <div class="price">₹320</div>
+                <div style="margin-top:8px;"><span class="badge veg"><span class="dot"></span>VEG</span></div>
+              </div>
+            </div>
+            <p class="desc">Charred paneer cubes marinated in yogurt and spices.</p>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="card" role="listitem">
+          <img class="photo" src="https://source.unsplash.com/1200x800/?garlic-bread" alt="Garlic Bread" loading="lazy">
+          <div class="card-content">
+            <div class="meta">
+              <div>
+                <div class="title">Garlic Bread</div>
+                <div class="small-note">Crispy oven-toasted garlic bread</div>
+              </div>
+              <div style="text-align:right">
+                <div class="price">₹150</div>
+                <div style="margin-top:8px;"><span class="badge veg"><span class="dot"></span>VEG</span></div>
+              </div>
+            </div>
+            <p class="desc">Buttery garlic slices with oregano and cheese on top.</p>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="card" role="listitem">
+          <img class="photo" src="https://source.unsplash.com/1200x800/?paneer-pasta" alt="Paneer Makhani Pasta" loading="lazy">
+          <div class="card-content">
+            <div class="meta">
+              <div>
+                <div class="title">Paneer Makhani Pasta</div>
+                <div class="small-note">House-made cottage cheese in tomato-butter gravy with rigatoni</div>
+              </div>
+              <div style="text-align:right">
+                <div class="price">₹280</div>
+                <div style="margin-top:8px;"><span class="badge veg"><span class="dot"></span>VEG</span></div>
+              </div>
+            </div>
+            <p class="desc">Comforting fusion of Indian makhani sauce with pasta.</p>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="card" role="listitem">
+          <img class="photo" src="https://source.unsplash.com/1200x800/?butter-chicken-pasta" alt="Butter Chicken Pasta" loading="lazy">
+          <div class="card-content">
+            <div class="meta">
+              <div>
+                <div class="title">Butter Chicken Pasta</div>
+                <div class="small-note">Creamy murgh makhani sauce with penne</div>
+              </div>
+              <div style="text-align:right">
+                <div class="price">₹320</div>
+                <div style="margin-top:8px;"><span class="badge nonveg"><span class="dot"></span>NON-VEG</span></div>
+              </div>
+            </div>
+            <p class="desc">Finished with kasuri methi and fresh cream for richness.</p>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="card" role="listitem">
+          <img class="photo" src="https://source.unsplash.com/1200x800/?vegetable-risotto" alt="Vegetable Risotto" loading="lazy">
+          <div class="card-content">
+            <div class="meta">
+              <div>
+                <div class="title">Vegetable Risotto</div>
+                <div class="small-note">Creamy arborio rice cooked with seasonal vegetables</div>
+              </div>
+              <div style="text-align:right">
+                <div class="price">₹380</div>
+                <div style="margin-top:8px;"><span class="badge veg"><span class="dot"></span>VEG</span></div>
+              </div>
+            </div>
+            <p class="desc">Comforting and silky risotto with parmesan (optional).</p>
+          </div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="card" role="listitem">
+          <img class="photo" src="https://source.unsplash.com/1200x800/?chicken-skewers" alt="Grilled Chicken Skewers" loading="lazy">
+          <div class="card-content">
+            <div class="meta">
+              <div>
+                <div class="title">Grilled Chicken Skewers</div>
+                <div class="small-note">Marinated chicken grilled with peppers</div>
+              </div>
+              <div style="text-align:right">
+                <div class="price">₹420</div>
+                <div style="margin-top:8px;"><span class="badge nonveg"><span class="dot"></span>NON-VEG</span></div>
+              </div>
+            </div>
+            <p class="desc">Served with a light herb dip.</p>
+          </div>
+        </article>
+
+        <!-- Card 7 -->
+        <article class="card" role="listitem">
+          <img class="photo" src="https://source.unsplash.com/1200x800/?tiramisu" alt="Tiramisu" loading="lazy">
+          <div class="card-content">
+            <div class="meta">
+              <div>
+                <div class="title">Tiramisu</div>
+                <div class="small-note">Classic Italian coffee dessert</div>
+              </div>
+              <div style="text-align:right">
+                <div class="price">₹240</div>
+                <div style="margin-top:8px;"><span class="badge"><span class="dot" style="background:#c0b390"></span>DESSERT</span></div>
+              </div>
+            </div>
+            <p class="desc">Layered with mascarpone and espresso-soaked biscuits.</p>
+          </div>
+        </article>
+
+        <!-- Card 8 -->
+        <article class="card" role="listitem">
+          <img class="photo" src="https://source.unsplash.com/1200x800/?chocolate-lava-cake" alt="Chocolate Lava Cake" loading="lazy">
+          <div class="card-content">
+            <div class="meta">
+              <div>
+                <div class="title">Chocolate Lava Cake</div>
+                <div class="small-note">Warm molten chocolate cake</div>
+              </div>
+              <div style="text-align:right">
+                <div class="price">₹260</div>
+                <div style="margin-top:8px;"><span class="badge"><span class="dot" style="background:#c0b390"></span>DESSERT</span></div>
+              </div>
+            </div>
+            <p class="desc">Served with vanilla ice cream.</p>
+          </div>
+        </article>
+
+      </div> <!-- .grid -->
+    </section>
+
+    <section id="info" class="info" aria-label="Restaurant information">
+      <div class="row">
+        <div class="icon">📍</div>
+        <div>Bandra West, Mumbai, Maharashtra</div>
+      </div>
+
+      <div class="row">
+        <div class="icon">⏰</div>
+        <div>Mon–Sun: 12 PM – 11 PM</div>
+      </div>
+
+      <div id="contact" class="row">
+        <div class="icon">📞</div>
+        <div>+91 22 6789 0123</div>
+      </div>
+
+      <div class="row" style="justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-weight:600;color:var(--cream)">Special requests</div>
+          <div class="small-note">Any dietary requirements, allergies or special occasions? Mention them when you call.</div>
+        </div>
+        <div style="text-align:right">
+          <button style="background:var(--accent);border:none;padding:10px 14px;border-radius:22px;color:#111;font-weight:600;cursor:default">Confirm Reservation</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div style="max-width:var(--max-width);margin:0 auto;padding:14px 0;">
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="logo" style="width:36px;height:36px;font-size:14px">LP</div>
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:16px;color:var(--cream)">La Pasta Bella</div>
+          <div class="small-note">Where the flavors of Tuscany meet the vibrant spirit of Mumbai.</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
